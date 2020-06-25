@@ -363,6 +363,12 @@
         
 
         <div class="post-meta">
+          
+            <i class="fa fa-thumb-tack"></i>
+            <font color=7D26CD>置顶</font>
+            <span class="post-meta-divider">|</span>
+          
+        
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -446,11 +452,6 @@
           
 
           
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
 
           
             <div class="post-wordcount">
@@ -479,7 +480,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  100
+                  101
                 </span>
               
             </div>
@@ -565,19 +566,24 @@
 <h4 id="2-1-早期知识表示方法-Page-43"><a href="#2-1-早期知识表示方法-Page-43" class="headerlink" title="2.1 早期知识表示方法 ~Page 43~"></a>2.1 早期知识表示方法 <code>~Page 43~</code></h4><h5 id="2-1-1-一阶谓词逻辑（一阶逻辑）"><a href="#2-1-1-一阶谓词逻辑（一阶逻辑）" class="headerlink" title="2.1.1 一阶谓词逻辑（一阶逻辑）"></a>2.1.1 一阶谓词逻辑（一阶逻辑）</h5><ul>
 <li>公理系统的标准形式逻辑，不同于命题逻辑，支持谓词和量词（全称量词和存在量词）</li>
 </ul>
-<pre><code>﹁图灵奖得主（x）  # 否定公式
-若x为John MaCarthy，图灵奖得主（x）</code></pre><h5 id="2-1-2-霍恩子句和霍恩逻辑"><a href="#2-1-2-霍恩子句和霍恩逻辑" class="headerlink" title="2.1.2 霍恩子句和霍恩逻辑"></a>2.1.2 霍恩子句和霍恩逻辑</h5><ul>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gml">﹁图灵奖得主（<span class="hljs-symbol">x</span>）  # 否定公式<br>若<span class="hljs-symbol">x</span>为John MaCarthy，图灵奖得主（<span class="hljs-symbol">x</span>）<br></code></pre></td></tr></table></figure>
+
+<h5 id="2-1-2-霍恩子句和霍恩逻辑"><a href="#2-1-2-霍恩子句和霍恩逻辑" class="headerlink" title="2.1.2 霍恩子句和霍恩逻辑"></a>2.1.2 霍恩子句和霍恩逻辑</h5><ul>
 <li>是一阶逻辑的子集，带有最多一个肯定文字的子句</li>
 </ul>
-<pre><code>﹁p_1 ∨...∨﹁p_n∨q   ==&gt;   (p_1 ∧...∧p_n) -&gt; q</code></pre><ul>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">﹁p_1 ∨...∨﹁p_n∨q   ==&gt;   <span class="hljs-function"><span class="hljs-params">(p_1 ∧...∧p_n)</span> -&gt;</span> q<br></code></pre></td></tr></table></figure>
+
+<ul>
 <li>霍恩逻辑规则由原子公式构成</li>
 </ul>
-<pre><code>B_1 ∧...∧B_n -&gt; H  # H为头原子公式，B为体原子公式，B可以没有
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gml">B_1 ∧...∧B_n -&gt; H  # H为头原子公式，B为体原子公式，B可以没有<br><br>∀<span class="hljs-symbol">x</span>,<span class="hljs-symbol">y</span>:IsDirectorOf(<span class="hljs-symbol">x</span>,<span class="hljs-symbol">y</span>) ==&gt; BeDirectedBy(<span class="hljs-symbol">y</span>,<span class="hljs-symbol">x</span>)<br></code></pre></td></tr></table></figure>
 
-∀x,y:IsDirectorOf(x,y) ==&gt; BeDirectedBy(y,x)</code></pre><h5 id="2-1-3-语义网络"><a href="#2-1-3-语义网络" class="headerlink" title="2.1.3 语义网络"></a>2.1.3 语义网络</h5><ul>
+<h5 id="2-1-3-语义网络"><a href="#2-1-3-语义网络" class="headerlink" title="2.1.3 语义网络"></a>2.1.3 语义网络</h5><ul>
 <li>在形式上是一个带标识的有向图，每个节点可以带有若干属性</li>
 </ul>
-<pre><code>(节点 1，联想弧，节点 2)</code></pre><ul>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">(节点 <span class="hljs-number">1</span>，联想弧，节点 <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
 <li><strong>无形式化语法</strong>。相同知识，可以表示为多种不同的语义网络</li>
 </ul>
 <h5 id="2-1-4-框架"><a href="#2-1-4-框架" class="headerlink" title="2.1.4 框架"></a>2.1.4 框架</h5><ul>
@@ -585,14 +591,9 @@
 <li>槽表示对象的一个属性，侧面表示属性的一个方面。槽和侧面都可以有属性值，称为槽值和侧面值</li>
 <li></li>
 </ul>
-<pre><code>&lt;框架名&gt;
-槽名 A       侧面名 A_1      值 A_{11}, 值 A_{12}...
-            侧面名 A_2      值 A_{21}, 值 A_{22}...
-槽名 B       侧面名 B_1      值 B_{11}, 值 B_{12}...
-            侧面名 B_2      值 B_{21}, 值 B_{22}...
-约束条件
-            约束条件 1
-            约束条件 2</code></pre><h5 id="2-1-5-描述逻辑"><a href="#2-1-5-描述逻辑" class="headerlink" title="2.1.5 描述逻辑"></a>2.1.5 描述逻辑</h5><ul>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">&lt;框架名&gt;<br>槽名 A       侧面名 A_1      值 A_&#123;<span class="hljs-number">11</span>&#125;, 值 A_&#123;<span class="hljs-number">12</span>&#125;...<br>			侧面名 A_2      值 A_&#123;<span class="hljs-number">21</span>&#125;, 值 A_&#123;<span class="hljs-number">22</span>&#125;...<br>槽名 B       侧面名 B_1      值 B_&#123;<span class="hljs-number">11</span>&#125;, 值 B_&#123;<span class="hljs-number">12</span>&#125;...<br>			侧面名 B_2      值 B_&#123;<span class="hljs-number">21</span>&#125;, 值 B_&#123;<span class="hljs-number">22</span>&#125;...<br>约束条件<br>			约束条件 <span class="hljs-number">1</span><br>			约束条件 <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="2-1-5-描述逻辑"><a href="#2-1-5-描述逻辑" class="headerlink" title="2.1.5 描述逻辑"></a>2.1.5 描述逻辑</h5><ul>
 <li>是一阶逻辑的一个可判定子集</li>
 <li>描述逻辑可以被看成是利用一阶逻辑对语义网络和框架进行形式化后的产物</li>
 <li>描述逻辑一般支持一元谓词（类）和二元谓词（关系）</li>
@@ -601,8 +602,9 @@
 <li>一个描述逻辑表示知识库主要由TBox和ABox两部分组成。TBox定义了特定知识领域的结构并包含一系列公理，可以通过已有概念构成新的概念。ABox包含了TBox中概念的实例</li>
 </ul>
 <p><img src="F:/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/pic/%E6%8F%8F%E8%BF%B0%E9%80%BB%E8%BE%91.jpg" alt="描述逻辑"></p>
-<pre><code>{x|Student(x)},{x|Children(x)}
-{&lt;x,y&gt;|Friend(x,y)},{&lt;x,y&gt;|Couple(x,y)}</code></pre><h4 id="2-2-语义网知识表示框架"><a href="#2-2-语义网知识表示框架" class="headerlink" title="2.2 语义网知识表示框架"></a>2.2 语义网知识表示框架</h4><h5 id="2-2-1-RDF"><a href="#2-2-1-RDF" class="headerlink" title="2.2.1 RDF"></a>2.2.1 RDF</h5><ul>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gml">&#123;<span class="hljs-symbol">x</span>|Student(<span class="hljs-symbol">x</span>)&#125;,&#123;<span class="hljs-symbol">x</span>|Children(<span class="hljs-symbol">x</span>)&#125;<br>&#123;&lt;<span class="hljs-symbol">x</span>,<span class="hljs-symbol">y</span>&gt;|Friend(<span class="hljs-symbol">x</span>,<span class="hljs-symbol">y</span>)&#125;,&#123;&lt;<span class="hljs-symbol">x</span>,<span class="hljs-symbol">y</span>&gt;|Couple(<span class="hljs-symbol">x</span>,<span class="hljs-symbol">y</span>)&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-语义网知识表示框架"><a href="#2-2-语义网知识表示框架" class="headerlink" title="2.2 语义网知识表示框架"></a>2.2 语义网知识表示框架</h4><h5 id="2-2-1-RDF"><a href="#2-2-1-RDF" class="headerlink" title="2.2.1 RDF"></a>2.2.1 RDF</h5><ul>
 <li>RDF 是 W3C 的 RDF 工作组制定的关于知识图谱的国际标准，是 W3C 一系列语义网标准的核心</li>
 <li>语义网的基础数据模型为 RDF</li>
 <li>RDF 采用<strong>开放世界假设</strong>，RDF 图谱里的知识可能是不完备的。可以分布式存储，以及实现分布式定义的知识的自动合并</li>
@@ -616,35 +618,14 @@
 <li>在 RDF 中，知识总是以三元组的形式出现。三元组中的主语是一个个体，个体是类的实例；谓语是一个属性，连接两个个体或一个个体和一个数据类型的实例；宾语可以是一个个体，也可以是一个<strong>数据类型的实例</strong>（<code>&quot;05-10-2012&quot;^xsd:date</code>）</li>
 <li>三元组中的主谓宾都有一个<strong>全局标识 URI</strong> ，全局标识可以简化成前缀 URI。同时 RDF 允许没有全局标识的空白节点，前缀为 “_”</li>
 </ul>
-<pre><code>http://ex.org/jeff  # 实体为jeff
-http://ex.org/schema#speaker  # 关系为speaker
-ex:jeff  # 简化前缀
-_:x  # 空白节点</code></pre><ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">http:</span>//ex<span class="hljs-meta">.org</span>/jeff  <span class="hljs-meta"># 实体为jeff</span><br><span class="hljs-symbol">http:</span>//ex<span class="hljs-meta">.org</span>/schema<span class="hljs-meta">#speaker  # 关系为speaker</span><br><span class="hljs-symbol">ex:</span>jeff  <span class="hljs-meta"># 简化前缀</span><br><span class="hljs-symbol">_:</span><span class="hljs-built_in">x</span>  <span class="hljs-meta"># 空白节点</span><br></code></pre></td></tr></table></figure>
+
+<ul>
 <li><strong>RDF 是抽象的数据模型，支持不同的序列化格式</strong>，如： RDF/XML、Turtle、N-Triples、N-Quads、TriG、TriX</li>
 </ul>
-<pre><code>#  RDF/XML
-&lt;rdf:RDF xmlns:ex-schema=http://ex.org/schema#&gt;
-# 主语，若缺少rdf:about属性，则此元素表示空白节点
- &lt;rdf:Description rdf:about=&quot;http://ex.org/ibm_talk&quot;&gt;      
-   &lt;ex-schema:speaker rdf:resource=&quot;http://ex.org/jeff&quot;&gt;     # 谓语和宾语
-   &lt;ex-schema:theme rdf:resource=&quot;http://ex.org/KG&quot;&gt;
-&lt;/rdf:RDF&gt;
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs stata">#  RDF/XML<br>&lt;rdf:RDF xmlns:<span class="hljs-keyword">ex</span>-schema=http:<span class="hljs-comment">//ex.org/schema#&gt;</span><br># 主语，若缺少rdf:<span class="hljs-keyword">about</span>属性，则此元素表示空白节点<br> &lt;rdf:Description rdf:<span class="hljs-keyword">about</span>=<span class="hljs-string">"http://ex.org/ibm_talk"</span>&gt;      <br>   &lt;<span class="hljs-keyword">ex</span>-schema:speaker rdf:resource=<span class="hljs-string">"http://ex.org/jeff"</span>&gt;     # 谓语和宾语<br>   &lt;<span class="hljs-keyword">ex</span>-schema:theme rdf:resource=<span class="hljs-string">"http://ex.org/KG"</span>&gt;<br>&lt;/rdf:RDF&gt;<br><br>#  Turtle<br>@prefix <span class="hljs-keyword">ex</span>: &lt;http:<span class="hljs-comment">//ex.org/&gt;.</span><br>@prefix <span class="hljs-keyword">ex</span>-schema: &lt;http:<span class="hljs-comment">//ex.org/schema#&gt;</span><br># 空白节点为 _:ibm_talk<br><span class="hljs-keyword">ex</span>:ibm_talk<br> <span class="hljs-keyword">ex</span>-schema:speaker <span class="hljs-keyword">ex</span>:jeff;<br> <span class="hljs-keyword">ex</span>-schema:theme <span class="hljs-keyword">ex</span>:KG.<br><br>#  <span class="hljs-keyword">N</span>-Triples<br>&lt;http:<span class="hljs-comment">//ex.org/ibm_talk&gt;</span><br>  &lt;http:<span class="hljs-comment">//ex.org/schema#speaker&gt;</span><br>  &lt;http:<span class="hljs-comment">//ex.org/jeff&gt;</span><br>&lt;http:<span class="hljs-comment">//ex.org/ibm_talk&gt;</span><br>  &lt;http:<span class="hljs-comment">//ex.org/schema#theme&gt;</span><br>  &lt;http:<span class="hljs-comment">//ex.org/KG&gt;</span><br></code></pre></td></tr></table></figure>
 
-#  Turtle
-@prefix ex: &lt;http://ex.org/&gt;.
-@prefix ex-schema: &lt;http://ex.org/schema#&gt;
-# 空白节点为 _:ibm_talk
-ex:ibm_talk
- ex-schema:speaker ex:jeff;
- ex-schema:theme ex:KG.
-
-#  N-Triples
-&lt;http://ex.org/ibm_talk&gt;
-  &lt;http://ex.org/schema#speaker&gt;
-  &lt;http://ex.org/jeff&gt;
-&lt;http://ex.org/ibm_talk&gt;
-  &lt;http://ex.org/schema#theme&gt;
-  &lt;http://ex.org/KG&gt;</code></pre><h5 id="2-2-2-RDFS"><a href="#2-2-2-RDFS" class="headerlink" title="2.2.2 RDFS"></a>2.2.2 RDFS</h5><ul>
+<h5 id="2-2-2-RDFS"><a href="#2-2-2-RDFS" class="headerlink" title="2.2.2 RDFS"></a>2.2.2 RDFS</h5><ul>
 <li><p><strong>RDF 无法区分类和对象，也无法定义和描述类的关系/属性</strong>，缺乏抽象能力，无法对同一个类别的事物进行定义和描述</p>
 </li>
 <li><p>RDF Schema（RDF 模式，简称 RDFS），提供了对类和属性（谓语）的简单描述。更丰富的定义需要用到 OWL 本体描述语言</p>
@@ -652,44 +633,9 @@ ex:ibm_talk
 <li><p>RDFS 提供了最基本的对类好属性的描述元语</p>
 </li>
 </ul>
-<pre><code>rdf:type        # 制定个体的类
-rdfs:subClassOf       # 制定类的父类
-rdfs:subPropertyOf     # 制定属性的父属性
-rdfs:domain          # 制定属性的定义域
-rdfs:range     # 制定属性的值域
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">rdf:type        # 制定个体的类<br>rdfs:subClassOf       # 制定类的父类<br>rdfs:subPropertyOf     # 制定属性的父属性<br>rdfs:domain          # 制定属性的定义域<br>rdfs:range     # 制定属性的值域<br><br># RDF/XML<br>&lt;rdf:RDF xmlns:rdf= "http://www.w3.org/1999/02/22-rdf-syntax-ns#" <br><span class="hljs-code"> xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"&gt;</span><br><br>&lt;rdf:Description rdf:ID="animal"&gt;<br><span class="hljs-code">  &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;</span><br>&lt;/rdf:Description&gt;<br><br>&lt;rdf:Description rdf:ID="horse"&gt;<br><span class="hljs-code">  &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;</span><br><span class="hljs-code">  &lt;rdfs:subClassOf rdf:resource="#animal"/&gt;</span><br>&lt;/rdf:Description&gt;<br><br>&lt;/rdf:RDF&gt;<br><br># Turtle:<br>@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .<br>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .<br>@prefix : &lt;http://www.kg.com/ontology/&gt; .<br><br># 这里我们用词汇rdfs:Class定义了“人”和“地点”这两个类。<br><span class="hljs-meta">:Person rdf:type</span> rdfs:Class.<br><span class="hljs-meta">:Place rdf:type</span> rdfs:Class.<br><br># rdfs当中不区分数据属性和对象属性，词汇rdf:Property定义了属性，即RDF的“边”。<br><span class="hljs-meta">:chineseName rdf:type</span> rdf:Property;<br><span class="hljs-code">        rdfs:domain :Person;</span><br><span class="hljs-code">        rdfs:range xsd:string .</span><br><br><span class="hljs-meta">:career rdf:type</span> rdf:Property;<br><span class="hljs-code">        rdfs:domain :Person;</span><br><span class="hljs-code">        rdfs:range xsd:string .</span><br></code></pre></td></tr></table></figure>
 
-# RDF/XML
-&lt;rdf:RDF xmlns:rdf= &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; 
- xmlns:rdfs=&quot;http://www.w3.org/2000/01/rdf-schema#&quot;&gt;
-
-&lt;rdf:Description rdf:ID=&quot;animal&quot;&gt;
-  &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2000/01/rdf-schema#Class&quot;/&gt;
-&lt;/rdf:Description&gt;
-
-&lt;rdf:Description rdf:ID=&quot;horse&quot;&gt;
-  &lt;rdf:type rdf:resource=&quot;http://www.w3.org/2000/01/rdf-schema#Class&quot;/&gt;
-  &lt;rdfs:subClassOf rdf:resource=&quot;#animal&quot;/&gt;
-&lt;/rdf:Description&gt;
-
-&lt;/rdf:RDF&gt;
-
-# Turtle:
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix : &lt;http://www.kg.com/ontology/&gt; .
-
-# 这里我们用词汇rdfs:Class定义了“人”和“地点”这两个类。
-:Person rdf:type rdfs:Class.
-:Place rdf:type rdfs:Class.
-
-# rdfs当中不区分数据属性和对象属性，词汇rdf:Property定义了属性，即RDF的“边”。
-:chineseName rdf:type rdf:Property;
-        rdfs:domain :Person;
-        rdfs:range xsd:string .
-
-:career rdf:type rdf:Property;
-        rdfs:domain :Person;
-        rdfs:range xsd:string .</code></pre><h5 id="2-2-3-OWL（Web-Ontology-Language）"><a href="#2-2-3-OWL（Web-Ontology-Language）" class="headerlink" title="2.2.3 OWL（Web Ontology Language）"></a>2.2.3 OWL（Web Ontology Language）</h5><ul>
+<h5 id="2-2-3-OWL（Web-Ontology-Language）"><a href="#2-2-3-OWL（Web-Ontology-Language）" class="headerlink" title="2.2.3 OWL（Web Ontology Language）"></a>2.2.3 OWL（Web Ontology Language）</h5><ul>
 <li><p><strong>RDF（S）语义表达能力弱，还缺少常用的特征</strong>：</p>
 <ul>
 <li>对于局部值域的属性定义。<code>rdfs:range</code> 是全局性的，无法说明某一属性应用于具体类时具有的特殊值域限制</li>
@@ -706,68 +652,11 @@ rdfs:range     # 制定属性的值域
 <li><p><strong>OWL 重要词汇</strong>  <code>~Page 55~</code></p>
 </li>
 </ul>
-<pre><code>@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
-@prefix exp: &lt;http://example.org&gt; .
-
-# 等价性声明
-owl:equivalentClass  # 类等价
-owl:equivalentProperty  # 属性等价
-owl:sameIndividualAs  # 实例等价
-
-# 属性传递声明
-# 声明exp:ancestor是一个传递关系，即a exp:ancestor b，b exp:ancestor c，则a exp:ancestor c
-exp:ancestor rdf:type owl:TransitiveProperty  
-
-# 属性互逆声明
-exp:ancestor owl:inverseOf exp:descendant
-
-# 属性函数性声明
-exp:hasMother rdf:type owl:FunctionalProperty  # 一个生物只能有一个妈妈
-
-# 属性的对称性声明
-exp:friend rdf:type owl:SymmetricProperty
-
-# 属性的全称限定声明
-# 声明exp:hasMother在主语属于exp:Person类的条件下，宾语只能来自exp:Women
-exp:Person owl:allValuesFrom exp:Women
-exp:Person owl:onProperty exp:hasMother
-
-# 属性的存在限定声明
-# 声明exp:publishedIn在主语属于exp:SemanticWebPaper类的条件下，宾语部分来自exp:AAAI
-exp:SemanticWebPaper owl:someValuesFrom exp:AAAI
-exp:SemanticWebPaper owl:onProperty exp:publishedIn
-
-# 属性基数限定声明（宾语的个数）
-# 声明exp:hasMother在主语属于exp:Person类的条件下，宾语只能有一个
-exp:Person owl:cardinality &quot;1&quot;^^xsd:integer
-exp:Person owl:onProperty exp:hasMother
-
-# 相交类，声明一个类等价于两个类相交
-# _:tmp是临时资源，是rdfs:Collection类型，是一个容器，两个成员为exp:Person和exp:HasChildren。下述三元组说明exp:Mother是exp:Person和exp:HasChildren的交集
-exp:Mother owl:intersectionOf _:tmp
-_:tmp rdf:type rdfs:Collection
-_:tmp rdfs:member exp:Person
-_:tmp rdfs:member exp:HasChildren
-
-owl:oneOf     # 声明枚举类型
-owl:disjointWith     # 声明两个类不相交
-owl:unionOf      # 声明类的并运算
-owl:minCardinality     # 声明最小基数限定
-owl:maxCardinality     # 声明最大基数限定
-owl:InverseFunctionalProperty    # 声明互反类具有函数特性
-owl:hasValue    # 声明所约束类必有一个取值
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs vim">@prefix <span class="hljs-keyword">ow</span><span class="hljs-variable">l:</span> &lt;http://www.w3.org/<span class="hljs-number">2002</span>/<span class="hljs-number">07</span>/owl#&gt; .<br>@prefix <span class="hljs-built_in">exp</span>: &lt;http://example.org&gt; .<br><br># 等价性声明<br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:equivalentClass</span>  # 类等价<br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:equivalentProperty</span>  # 属性等价<br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:sameIndividualAs</span>  # 实例等价<br><br># 属性传递声明<br># 声明<span class="hljs-built_in">exp</span>:ancestor是一个传递关系，即<span class="hljs-keyword">a</span> <span class="hljs-built_in">exp</span>:ancestor <span class="hljs-keyword">b</span>，<span class="hljs-keyword">b</span> <span class="hljs-built_in">exp</span>:ancestor <span class="hljs-keyword">c</span>，则<span class="hljs-keyword">a</span> <span class="hljs-built_in">exp</span>:ancestor <span class="hljs-keyword">c</span><br><span class="hljs-built_in">exp</span>:ancestor rdf:<span class="hljs-built_in">type</span> <span class="hljs-keyword">ow</span><span class="hljs-variable">l:TransitiveProperty</span>  <br><br># 属性互逆声明<br><span class="hljs-built_in">exp</span>:ancestor <span class="hljs-keyword">ow</span><span class="hljs-variable">l:inverseOf</span> <span class="hljs-built_in">exp</span>:descendant<br><br># 属性函数性声明<br><span class="hljs-built_in">exp</span>:hasMother rdf:<span class="hljs-built_in">type</span> <span class="hljs-keyword">ow</span><span class="hljs-variable">l:FunctionalProperty</span>  # 一个生物只能有一个妈妈<br><br># 属性的对称性声明<br><span class="hljs-built_in">exp</span>:friend rdf:<span class="hljs-built_in">type</span> <span class="hljs-keyword">ow</span><span class="hljs-variable">l:SymmetricProperty</span><br><br># 属性的全称限定声明<br># 声明<span class="hljs-built_in">exp</span>:hasMother在主语属于<span class="hljs-built_in">exp</span>:Person类的条件下，宾语只能来自<span class="hljs-built_in">exp</span>:Women<br><span class="hljs-built_in">exp</span>:Person <span class="hljs-keyword">ow</span><span class="hljs-variable">l:allValuesFrom</span> <span class="hljs-built_in">exp</span>:Women<br><span class="hljs-built_in">exp</span>:Person <span class="hljs-keyword">ow</span><span class="hljs-variable">l:onProperty</span> <span class="hljs-built_in">exp</span>:hasMother<br><br># 属性的存在限定声明<br># 声明<span class="hljs-built_in">exp</span>:publishedIn在主语属于<span class="hljs-built_in">exp</span>:SemanticWebPaper类的条件下，宾语部分来自<span class="hljs-built_in">exp</span>:AAAI<br><span class="hljs-built_in">exp</span>:SemanticWebPaper <span class="hljs-keyword">ow</span><span class="hljs-variable">l:someValuesFrom</span> <span class="hljs-built_in">exp</span>:AAAI<br><span class="hljs-built_in">exp</span>:SemanticWebPaper <span class="hljs-keyword">ow</span><span class="hljs-variable">l:onProperty</span> <span class="hljs-built_in">exp</span>:publishedIn<br><br># 属性基数限定声明（宾语的个数）<br># 声明<span class="hljs-built_in">exp</span>:hasMother在主语属于<span class="hljs-built_in">exp</span>:Person类的条件下，宾语只能有一个<br><span class="hljs-built_in">exp</span>:Person <span class="hljs-keyword">ow</span><span class="hljs-variable">l:cardinality</span> <span class="hljs-string">"1"</span>^^xsd:integer<br><span class="hljs-built_in">exp</span>:Person <span class="hljs-keyword">ow</span><span class="hljs-variable">l:onProperty</span> <span class="hljs-built_in">exp</span>:hasMother<br><br># 相交类，声明一个类等价于两个类相交<br># _:tmp是临时资源，是rdf<span class="hljs-variable">s:Collection</span>类型，是一个容器，两个成员为<span class="hljs-built_in">exp</span>:Person和<span class="hljs-built_in">exp</span>:HasChildren。下述三元组说明<span class="hljs-built_in">exp</span>:Mother是<span class="hljs-built_in">exp</span>:Person和<span class="hljs-built_in">exp</span>:HasChildren的交集<br><span class="hljs-built_in">exp</span>:Mother <span class="hljs-keyword">ow</span><span class="hljs-variable">l:intersectionOf</span> _:tmp<br>_:tmp rdf:<span class="hljs-built_in">type</span> rdf<span class="hljs-variable">s:Collection</span><br>_:tmp rdf<span class="hljs-variable">s:member</span> <span class="hljs-built_in">exp</span>:Person<br>_:tmp rdf<span class="hljs-variable">s:member</span> <span class="hljs-built_in">exp</span>:HasChildren<br><br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:oneOf</span>     # 声明枚举类型<br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:disjointWith</span>     # 声明两个类不相交<br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:unionOf</span>      # 声明类的并运算<br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:minCardinality</span>     # 声明最小基数限定<br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:maxCardinality</span>     # 声明最大基数限定<br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:InverseFunctionalProperty</span>    # 声明互反类具有函数特性<br><span class="hljs-keyword">ow</span><span class="hljs-variable">l:hasValue</span>    # 声明所约束类必有一个取值<br><br><br># 这个例子表示，白葡萄酒就是葡萄酒和白色物体的相交的集合<br>&lt;<span class="hljs-keyword">ow</span><span class="hljs-variable">l:Class</span> rdf:ID=<span class="hljs-string">"WhiteWine"</span>&gt;<br>  &lt;<span class="hljs-keyword">ow</span><span class="hljs-variable">l:intersectionOf</span> rdf:parseType=<span class="hljs-string">"Collection"</span>&gt; /*这是必须的，因为必须对集合操作*/<br>    &lt;<span class="hljs-keyword">ow</span><span class="hljs-variable">l:Class</span> rdf:about=<span class="hljs-string">"#Wine"</span> /&gt;<br>    &lt;<span class="hljs-keyword">ow</span><span class="hljs-variable">l:Restriction</span>&gt;<br>      &lt;<span class="hljs-keyword">ow</span><span class="hljs-variable">l:onProperty</span> rdf:resource=<span class="hljs-string">"#hasColor"</span> /&gt;<br>      &lt;<span class="hljs-keyword">ow</span><span class="hljs-variable">l:hasValue</span> rdf:resource=<span class="hljs-string">"#White"</span> /&gt;<br>    &lt;/<span class="hljs-keyword">ow</span><span class="hljs-variable">l:Restriction</span>&gt;<br>  &lt;/<span class="hljs-keyword">ow</span><span class="hljs-variable">l:intersectionOf</span>&gt;<br>&lt;/<span class="hljs-keyword">ow</span><span class="hljs-variable">l:Class</span>&gt;<br></code></pre></td></tr></table></figure>
 
 
-# 这个例子表示，白葡萄酒就是葡萄酒和白色物体的相交的集合
-&lt;owl:Class rdf:ID=&quot;WhiteWine&quot;&gt;
-  &lt;owl:intersectionOf rdf:parseType=&quot;Collection&quot;&gt; /*这是必须的，因为必须对集合操作*/
-    &lt;owl:Class rdf:about=&quot;#Wine&quot; /&gt;
-    &lt;owl:Restriction&gt;
-      &lt;owl:onProperty rdf:resource=&quot;#hasColor&quot; /&gt;
-      &lt;owl:hasValue rdf:resource=&quot;#White&quot; /&gt;
-    &lt;/owl:Restriction&gt;
-  &lt;/owl:intersectionOf&gt;
-&lt;/owl:Class&gt;</code></pre><hr>
+
+<hr>
 <h3 id="3-知识存储"><a href="#3-知识存储" class="headerlink" title="3. 知识存储"></a>3. 知识存储</h3><ul>
 <li>语义万维网领域发展处专门存储 RDF 数据的三元组库；数据库领域发展出用于管理属性图的图数据库</li>
 </ul>
@@ -781,14 +670,9 @@ owl:hasValue    # 声明所约束类必有一个取值
 <li>节点属性可以用三元组表示，此时宾语称为字面量</li>
 <li>边上的属性的表示利用 RDF 中叫做 具体化（reification） 的技术。该技术需要引入额外的点表示整个三元组，同时将边属性表示为以该节点为主语的三元组</li>
 </ul>
-<pre><code>ex:zhangsan 参加 ex:graphdb
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">ex</span><span class="hljs-selector-pseudo">:zhangsan</span> 参加 <span class="hljs-selector-tag">ex</span><span class="hljs-selector-pseudo">:graphdb</span><br><br># 引入 <span class="hljs-selector-tag">ex</span><span class="hljs-selector-pseudo">:participate</span> 节点<br><span class="hljs-selector-tag">ex</span><span class="hljs-selector-pseudo">:participate</span> <span class="hljs-selector-tag">rdf</span><span class="hljs-selector-pseudo">:subject</span> <span class="hljs-selector-tag">ex</span><span class="hljs-selector-pseudo">:zhangsan</span><br><span class="hljs-selector-tag">ex</span><span class="hljs-selector-pseudo">:participate</span> <span class="hljs-selector-tag">rdf</span><span class="hljs-selector-pseudo">:predicate</span> 参加<br><span class="hljs-selector-tag">ex</span><span class="hljs-selector-pseudo">:participate</span> <span class="hljs-selector-tag">rdf</span><span class="hljs-selector-pseudo">:object</span> <span class="hljs-selector-tag">ex</span><span class="hljs-selector-pseudo">:graphdb</span><br># 边属性添加<br><span class="hljs-selector-tag">ex</span><span class="hljs-selector-pseudo">:participate</span> 权重 0<span class="hljs-selector-class">.4</span><br></code></pre></td></tr></table></figure>
 
-# 引入 ex:participate 节点
-ex:participate rdf:subject ex:zhangsan
-ex:participate rdf:predicate 参加
-ex:participate rdf:object ex:graphdb
-# 边属性添加
-ex:participate 权重 0.4</code></pre></li>
+</li>
 </ul>
 <h5 id="3-1-2-属性图"><a href="#3-1-2-属性图" class="headerlink" title="3.1.2 属性图"></a>3.1.2 属性图</h5><ul>
 <li>目前被图数据库业界采纳最广的一种图数据模型，由节点和边集组成</li>
@@ -817,87 +701,43 @@ ex:participate 权重 0.4</code></pre></li>
 <li>三元组模板，在 <code>WHERE</code> 子句中列出的三元组模板，其中允许变量存在</li>
 <li><code>SELECT</code> 子句指示查询目标变量</li>
 </ul>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL">PREFIX exp: http://www.example.org/
-SELECT ?student
-WHERE {
-    ?student exp:studies exp:CS328 .
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL">PREFIX exp: http:&#x2F;&#x2F;www.example.org&#x2F;<br>SELECT ?student<br>WHERE &#123;<br>	?student exp:studies exp:CS328 .<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>常见的<strong>查询算子</strong></p>
 <ul>
 <li><code>OPTIONAL</code> ：指这个算子覆盖范围的查询语句是可选的。如下若学生没有邮箱，则依然返回姓名，邮箱空缺</li>
 </ul>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL">PREFIX exp: http://www.example.org/
-SELECT ?student ?email
-WHERE {
-    ?student exp:studies exp:CS328 .
-OPTIONAL {
-    ?student foaf:mbox ?email .
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL">PREFIX exp: http:&#x2F;&#x2F;www.example.org&#x2F;<br>SELECT ?student ?email<br>WHERE &#123;<br>	?student exp:studies exp:CS328 .<br>OPTIONAL &#123;<br>    ?student foaf:mbox ?email .<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li><code>FILTER</code>：指这个算子覆盖范围的查询用来过滤查询结果</li>
 </ul>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL">SELECT ?module ?name ?age
-WHERE {
-    ?student exp:studies ?module .
-    ?student foaf:name ?name .
-OPTIONAL {
-    ?student exp:age ?age .
-    FILTER (?age > 25)
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL">SELECT ?module ?name ?age<br>WHERE &#123;<br>	?student exp:studies ?module .<br>    ?student foaf:name ?name .<br>OPTIONAL &#123;<br>    ?student exp:age ?age .<br>    FILTER (?age &gt; 25)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li><code>UNION</code>：将两个查询结果合并</li>
 </ul>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL">SELECT ?student ?email
-WHERE {
-    ?student foaf:mbox ?email .
-    {?student exp:studies exp:CS328} UNION {?student exp:studies exp:CS909}
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL">SELECT ?student ?email<br>WHERE &#123;<br>    ?student foaf:mbox ?email .<br>    &#123;?student exp:studies exp:CS328&#125; UNION &#123;?student exp:studies exp:CS909&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>SPARQL 允许嵌套，即 <code>WHERE</code> 子句中包含 <code>SELECT</code> 子句</p>
 </li>
 <li><p><strong>属性路径机制</strong>，如下所示。<code>ex:knows*/ex:participate</code> 类似正则表达式，表示经过0条、1条或多条 <code>ex:knows</code> 边，再经过一条 <code>ex:participate</code> 边。<code>~Page 87~</code></p>
 </li>
 </ul>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL">PREFIX ex: <http://www.example.org/>
-SELECT ?name
-WHERE {
-    ?p ex:participate ex:graphdb .
-    ?p ex:age 29 .
-    ?p ex:knows*/ex:participate ?pr .
-    ?pr rdfs:label ?name .
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL">PREFIX ex: &lt;http:&#x2F;&#x2F;www.example.org&#x2F;&gt;<br>SELECT ?name<br>WHERE &#123;<br>    ?p ex:participate ex:graphdb .<br>    ?p ex:age 29 .<br>    ?p ex:knows*&#x2F;ex:participate ?pr .<br>    ?pr rdfs:label ?name .<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h5 id="3-2-2-Cypher-（属性图查询）-Page-87"><a href="#3-2-2-Cypher-（属性图查询）-Page-87" class="headerlink" title="3.2.2 Cypher （属性图查询） ~Page 87~"></a>3.2.2 Cypher （属性图查询） <code>~Page 87~</code></h5><ul>
 <li>声明式语言</li>
 </ul>
-<pre class="line-numbers language-cypher"><code class="language-cypher">MATCH (p:程序员)
-RETURN p
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cypher">MATCH (p:程序员)<br>RETURN p<br><br>&#x2F;&#x2F; 查询边<br>MATCH (:程序员) -[r]-&gt; (:项目 &#123;name: &#39;图数据库&#39;&#125;)<br>RETURN r<br>                     <br>&#x2F;&#x2F; 多模式<br>MATCH (:程序员) -[:认识]-&gt; (p:程序员), (p) -[:参加]-&gt; (pr:项目)<br>WHERE p.年龄 &gt; 30<br>RETURN pr.项目<br></code></pre></td></tr></table></figure>
 
-// 查询边
-MATCH (:程序员) -[r]-> (:项目 {name: '图数据库'})
-RETURN r
-
-// 多模式
-MATCH (:程序员) -[:认识]-> (p:程序员), (p) -[:参加]-> (pr:项目)
-WHERE p.年龄 > 30
-RETURN pr.项目<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="3-2-3-Gremlin（属性图查询）-Page-89"><a href="#3-2-3-Gremlin（属性图查询）-Page-89" class="headerlink" title="3.2.3 Gremlin（属性图查询） ~Page 89~"></a>3.2.3 Gremlin（属性图查询） <code>~Page 89~</code></h5><ul>
 <li>是 Apache TinkerPop 图计算框架提供的属性图查询语言</li>
 <li>Gremlin 为<strong>过程式语言，或导航式语言</strong>。用户使用 Gremlin 需要指明具体的导航步骤</li>
 <li>Gremlin 更像是一种函数式的编程语言接口</li>
 </ul>
-<pre class="line-numbers language-gremlin"><code class="language-gremlin"># 列出图中所有节点的属性
-g.V
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs gremlin"># 列出图中所有节点的属性<br>g.V<br><br># 边<br>g.E<br><br># 查询从节点1出发的标签为“认识”的边<br>g.v(1).outE(&#39;认识&#39;)<br><br>g.v(1).out(&#39;认识&#39;).filter&#123;it.年龄 &gt; 30&#125;.out(&#39;参加&#39;).项目<br></code></pre></td></tr></table></figure>
 
-# 边
-g.E
-
-# 查询从节点1出发的标签为“认识”的边
-g.v(1).outE('认识')
-
-g.v(1).out('认识').filter{it.年龄 > 30}.out('参加').项目<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="3-3-知识图谱存储方案-Page-91-Page-20"><a href="#3-3-知识图谱存储方案-Page-91-Page-20" class="headerlink" title="3.3 知识图谱存储方案 ~Page 91 Page 20~"></a>3.3 知识图谱存储方案 <code>~Page 91 Page 20~</code></h4><ul>
 <li>基于关系型数据库的存储方案通常能够适应<strong>千万到十亿三元组规模</strong>的管理；</li>
 <li>对于一般在<strong>百万到上亿三元组</strong>的管理，使用稍高配置的单机系统和主流RDF三元组数据库（如 Jena、RDF4J、Virtuoso等）完全可以胜任；</li>
@@ -919,25 +759,15 @@ g.v(1).out('认识').filter{it.年龄 > 30}.out('参加').项目<span aria-hidde
 <h6 id="a-三元组表"><a href="#a-三元组表" class="headerlink" title="a. 三元组表"></a>a. 三元组表</h6><ul>
 <li>每个三元组存储为一行，在关系数据库中建立一张具有3列的表</li>
 </ul>
-<pre><code>(主语，谓语，宾语)</code></pre><ul>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">(<span class="hljs-name">主语，谓语，宾语</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
 <li>三元组表的<strong>优势</strong>在于行维度上的灵活性，即存储模式不会随行的增加而变化</li>
 <li>问题在于将知识图谱查询翻译为 SQL 查询后的三元组表<strong>自连接</strong>（如下），当三元组表规模较大时，多个自连接操作会使 SQL 查询性能低下</li>
 </ul>
-<pre><code># SPARQL
-SELECT ?person
-WHERE {
-    ?person born &quot;1850&quot; .
-    ?person died &quot;1934&quot; .
-    ?person founder ?company .
-}
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment"># SPARQL</span><br>SELECT ?person<br>WHERE &#123;<br>	?person <span class="hljs-keyword">born </span><span class="hljs-string">"1850"</span> .<br>	?person <span class="hljs-keyword">died </span><span class="hljs-string">"1934"</span> .<br>	?person founder ?company .<br>&#125;<br><br><span class="hljs-comment"># SQL</span><br>SELECT <span class="hljs-built_in">t1</span>.主语<br>FROM t AS <span class="hljs-built_in">t1</span>, t AS <span class="hljs-built_in">t2</span>, t AS <span class="hljs-built_in">t3</span><br>WHERE<br><span class="hljs-built_in">t1</span>.主语 = <span class="hljs-built_in">t2</span>.主语 <span class="hljs-keyword">AND </span><span class="hljs-built_in">t2</span>.主语 = <span class="hljs-built_in">t3</span>.主语 <span class="hljs-keyword">AND </span><span class="hljs-built_in">t1</span>.谓语 = <span class="hljs-string">'born'</span> <span class="hljs-keyword">AND </span><span class="hljs-built_in">t1</span>.宾语 = <span class="hljs-string">'1850'</span><br>  <span class="hljs-keyword">AND </span><span class="hljs-built_in">t2</span>.谓语 = <span class="hljs-string">'died'</span> <span class="hljs-keyword">AND </span><span class="hljs-built_in">t2</span>.宾语 = <span class="hljs-string">'1934'</span><br>  <span class="hljs-keyword">AND </span><span class="hljs-built_in">t3</span>.谓语 = <span class="hljs-string">'founder'</span><br></code></pre></td></tr></table></figure>
 
-# SQL
-SELECT t1.主语
-FROM t AS t1, t AS t2, t AS t3
-WHERE
-t1.主语 = t2.主语 AND t2.主语 = t3.主语 AND t1.谓语 = &#39;born&#39; AND t1.宾语 = &#39;1850&#39;
-  AND t2.谓语 = &#39;died&#39; AND t2.宾语 = &#39;1934&#39;
-  AND t3.谓语 = &#39;founder&#39;</code></pre><h6 id="b-水平表"><a href="#b-水平表" class="headerlink" title="b. 水平表"></a>b. 水平表</h6><ul>
+<h6 id="b-水平表"><a href="#b-水平表" class="headerlink" title="b. 水平表"></a>b. 水平表</h6><ul>
 <li>每行存储知识图谱一个主语的所有谓语和宾语</li>
 <li>相当于知识图谱的邻接表</li>
 <li>只需单表就可以查询，不需要自连接</li>
@@ -1088,11 +918,8 @@ t1.主语 = t2.主语 AND t2.主语 = t3.主语 AND t1.谓语 = &#39;born&#39; A
 <li>目前支持用户对同一类型节点的某个属性数据建立索引，以加速对某属性的查询处理性能</li>
 <li>在查询时，不需要指定需要使用的索引，查询优化器会自动选择要用到的索引</li>
 </ul>
-<pre class="line-numbers language-cypher"><code class="language-cypher">// 构建索引
-CREATE INDEX ON :程序员(姓名)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cypher">&#x2F;&#x2F; 构建索引<br>CREATE INDEX ON :程序员(姓名)<br><br>&#x2F;&#x2F; 删除索引<br>DROP INDEX ON :程序员(姓名)<br></code></pre></td></tr></table></figure>
 
-// 删除索引
-DROP INDEX ON :程序员(姓名)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h6 id="图结构索引"><a href="#图结构索引" class="headerlink" title="图结构索引"></a>图结构索引</h6><ul>
 <li>分为“基于路径的”和“基于子图的”两种<ul>
 <li><strong>基于路径的图索引</strong><ul>
@@ -1152,66 +979,9 @@ DROP INDEX ON :程序员(姓名)<span aria-hidden="true" class="line-numbers-row
 </li>
 <li>需要定义<strong>映射文档</strong> <code>~Page 157~</code></li>
 </ul>
-<pre><code>@prefix rr: &lt;http://www.w3.org/ns/r2rml#&gt; .
-@prefix ex: &lt;http://example.com/ns#&gt; .
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs stata">@prefix rr: &lt;http:<span class="hljs-comment">//www.w3.org/ns/r2rml#&gt; .</span><br>@prefix <span class="hljs-keyword">ex</span>: &lt;http:<span class="hljs-comment">//example.com/ns#&gt; .</span><br><br>&lt;#TriplesMap1&gt;<br>	<span class="hljs-comment">// 逻辑表</span><br>	rr:logicalTable [rr:tableName <span class="hljs-string">"EMP"</span>];<br>	<span class="hljs-comment">// 主语映射，EMPNO 为数据库中 EMP 表的 EMPNO 列</span><br>	rr:subjectMap [<br>		rr:template <span class="hljs-string">"http://data.example.com/employee/&#123;EMPNO&#125;"</span> ;<br>		rr:<span class="hljs-keyword">class</span> <span class="hljs-keyword">ex</span>:Employee;<br>	];<br>	<span class="hljs-comment">// 谓语-宾语映射，设定 ENAME 列的谓语，宾语为文字值</span><br>	rr:predicateObjectMap [<br>		rr:predicate <span class="hljs-keyword">ex</span>:name;<br>		rr:objectMap [ rr:column <span class="hljs-string">"ENAME"</span> ];		<br>	].<br>	<span class="hljs-comment">// 将 EMP 和 DEPT 表连接，实现三元组的主语和宾语均为实体，</span><br>	<span class="hljs-comment">// parentTriplesMap只能有一个，代表参考宾语映射（referencing object map）的父三元组映射（parent triples map）</span><br>	<span class="hljs-comment">// rr:child 必须在包含参考宾语映射的当前三元组映射的逻辑表的列上</span><br>	<span class="hljs-comment">// rr:parent 必须在参考宾语映射的父三元组映射的逻辑表的列上</span><br>	<span class="hljs-comment">// 设&lt;#TriplesMap2&gt;的逻辑表是DEPT，则下述代表EMP.DEPTNO = DEPT.DEPTNO</span><br>	rr:predicateObjectMap [<br>		rr:predicate <span class="hljs-keyword">ex</span>:department;<br>		rr:objectMap [ <br>			rr:parentTriplesMap &lt;#TriplesMap2&gt;;<br>			rr:jointCondition [<br>				rr:child <span class="hljs-string">"DEPTNO"</span>;<br>				rr:parent <span class="hljs-string">"DEPTNO"</span>;<br>			];<br>		];<br>	].<br>	<br><br><span class="hljs-comment">// 基于 SQL 语句定义查询视图</span><br>&lt;#DeptTableView&gt; rr:sqlQuery <span class="hljs-string">""</span>"<br>SELECT DEPTNO, DNAME, <span class="hljs-keyword">LOC</span>, <br>	   (SELECT <span class="hljs-keyword">COUNT</span>(*) FROM EMP WHERE EMP.DEPTO=DEPT.DEPTNO) <span class="hljs-keyword">AS</span> STAFF<br>FROM DEPT;<br><span class="hljs-string">""</span>".<br><br>&lt;#TriplesMap2&gt;<br>	<span class="hljs-comment">// 逻辑表</span><br>	rr:logicalTable &lt;#DeptTableView&gt;;<br>	rr:subjectMap [<br>		rr:template <span class="hljs-string">"http://data.example.com/department/&#123;DEPTNO&#125;"</span> ;<br>		rr:<span class="hljs-keyword">class</span> <span class="hljs-keyword">ex</span>:Department;<br>	];<br>	rr:predicateObjectMap [<br>		rr:predicate <span class="hljs-keyword">ex</span>:name;<br>		rr:objectMap [ rr:column <span class="hljs-string">"DNAME"</span> ];		<br>	].<br>	rr:predicateObjectMap [<br>		rr:predicate <span class="hljs-keyword">ex</span>:location;<br>		rr:objectMap [ rr:column <span class="hljs-string">"LOC"</span> ];		<br>	].<br>	rr:predicateObjectMap [<br>		rr:predicate <span class="hljs-keyword">ex</span>:staff;<br>		rr:objectMap [ rr:column <span class="hljs-string">"STAFF"</span> ];		<br>	].<br></code></pre></td></tr></table></figure>
 
-&lt;#TriplesMap1&gt;
-    // 逻辑表
-    rr:logicalTable [rr:tableName &quot;EMP&quot;];
-    // 主语映射，EMPNO 为数据库中 EMP 表的 EMPNO 列
-    rr:subjectMap [
-        rr:template &quot;http://data.example.com/employee/{EMPNO}&quot; ;
-        rr:class ex:Employee;
-    ];
-    // 谓语-宾语映射，设定 ENAME 列的谓语，宾语为文字值
-    rr:predicateObjectMap [
-        rr:predicate ex:name;
-        rr:objectMap [ rr:column &quot;ENAME&quot; ];        
-    ].
-    // 将 EMP 和 DEPT 表连接，实现三元组的主语和宾语均为实体，
-    // parentTriplesMap只能有一个，代表参考宾语映射（referencing object map）的父三元组映射（parent triples map）
-    // rr:child 必须在包含参考宾语映射的当前三元组映射的逻辑表的列上
-    // rr:parent 必须在参考宾语映射的父三元组映射的逻辑表的列上
-    // 设&lt;#TriplesMap2&gt;的逻辑表是DEPT，则下述代表EMP.DEPTNO = DEPT.DEPTNO
-    rr:predicateObjectMap [
-        rr:predicate ex:department;
-        rr:objectMap [ 
-            rr:parentTriplesMap &lt;#TriplesMap2&gt;;
-            rr:jointCondition [
-                rr:child &quot;DEPTNO&quot;;
-                rr:parent &quot;DEPTNO&quot;;
-            ];
-        ];
-    ].
-
-
-// 基于 SQL 语句定义查询视图
-&lt;#DeptTableView&gt; rr:sqlQuery &quot;&quot;&quot;
-SELECT DEPTNO, DNAME, LOC, 
-       (SELECT COUNT(*) FROM EMP WHERE EMP.DEPTO=DEPT.DEPTNO) AS STAFF
-FROM DEPT;
-&quot;&quot;&quot;.
-
-&lt;#TriplesMap2&gt;
-    // 逻辑表
-    rr:logicalTable &lt;#DeptTableView&gt;;
-    rr:subjectMap [
-        rr:template &quot;http://data.example.com/department/{DEPTNO}&quot; ;
-        rr:class ex:Department;
-    ];
-    rr:predicateObjectMap [
-        rr:predicate ex:name;
-        rr:objectMap [ rr:column &quot;DNAME&quot; ];        
-    ].
-    rr:predicateObjectMap [
-        rr:predicate ex:location;
-        rr:objectMap [ rr:column &quot;LOC&quot; ];        
-    ].
-    rr:predicateObjectMap [
-        rr:predicate ex:staff;
-        rr:objectMap [ rr:column &quot;STAFF&quot; ];        
-    ].
-</code></pre><h5 id="4-2-3-基于本体的数据库访问（Obtology-Based-Database-Access）系统"><a href="#4-2-3-基于本体的数据库访问（Obtology-Based-Database-Access）系统" class="headerlink" title="4.2.3 基于本体的数据库访问（Obtology Based Database Access）系统"></a>4.2.3 基于本体的数据库访问（Obtology Based Database Access）系统</h5><ul>
+<h5 id="4-2-3-基于本体的数据库访问（Obtology-Based-Database-Access）系统"><a href="#4-2-3-基于本体的数据库访问（Obtology-Based-Database-Access）系统" class="headerlink" title="4.2.3 基于本体的数据库访问（Obtology Based Database Access）系统"></a>4.2.3 基于本体的数据库访问（Obtology Based Database Access）系统</h5><ul>
 <li><p>支持以访问知识图谱的形式直接访问关系数据库，可以使用 SPARQL 查询数据库信息</p>
 </li>
 <li><p>D2RQ、Mastro、Ultrawrap、Morph-RDB、Ontop <code>~Page 159~</code></p>
@@ -2137,9 +1907,10 @@ FROM DEPT;
 </ul>
 <h6 id="a-查询"><a href="#a-查询" class="headerlink" title="a. 查询"></a>a. 查询</h6><ul>
 <li><p><code>SELECT</code>，唯一可以返回图模式匹配的具体结果给用户的形式</p>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL"># 过滤条件可选
-SELECT 变量
-WHERE {基本图模式 [过滤条件]}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL"># 过滤条件可选<br>SELECT 变量<br>WHERE &#123;基本图模式 [过滤条件]&#125;<br></code></pre></td></tr></table></figure>
+
+
+
 </li>
 </ul>
 <ul>
@@ -2147,52 +1918,27 @@ WHERE {基本图模式 [过滤条件]}<span aria-hidden="true" class="line-numbe
 <ul>
 <li>其后面的内容与 <code>SELECT</code> 中的 <code>WHERE</code> 相似</li>
 </ul>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL"># 条件约束 可选
-ASK {基本图模式 [条件约束]}
-
-ASK { ?person name "Tim Burton"}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL"># 条件约束 可选<br>ASK &#123;基本图模式 [条件约束]&#125;<br><br>ASK &#123; ?person name &quot;Tim Burton&quot;&#125;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p><code>CONSTRUCT</code>，将图模式匹配结果生成新的 RDF 图</p>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL">CONSTRUCT {
-    ?person type director .
-    ?person type person
-}
-WHERE {
-    ?person name "Tim Burton"
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL">CONSTRUCT &#123;<br>    ?person type director .<br>    ?person type person<br>&#125;<br>WHERE &#123;<br>    ?person name &quot;Tim Burton&quot;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 <li><p><code>DESCRIBE</code>，查询与制定 IRI 相关的数据，和 <code>SELECT</code> 有所区别，其返回资源的所有信息</p>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL"># DESCRIBE后可以直接使用 IRI，也可以使用变量标识
-# 过滤条件可选
-# WHERE部分为可选项，返回资源的所有信息
-DESCRIBE IRI 或 变量
-WHERE {基本图模式 [过滤条件]}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL"># DESCRIBE后可以直接使用 IRI，也可以使用变量标识<br># 过滤条件可选<br># WHERE部分为可选项，返回资源的所有信息<br>DESCRIBE IRI 或 变量<br>WHERE &#123;基本图模式 [过滤条件]&#125;<br><br>DESCRIBE ?person<br>WHERE &#123;?person name &quot;Tim Burton&quot;&#125;<br><br>######### output #########<br>p2556 name &quot;Tim Burton&quot;<br>f1342 director p2556<br>f1336 director p2556<br>f1333 director p2556<br></code></pre></td></tr></table></figure>
 
-DESCRIBE ?person
-WHERE {?person name "Tim Burton"}
 
-######### output #########
-p2556 name "Tim Burton"
-f1342 director p2556
-f1336 director p2556
-f1333 director p2556<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <h6 id="b-插入"><a href="#b-插入" class="headerlink" title="b. 插入"></a>b. 插入</h6><ul>
 <li><p><code>INSERT DATA</code>，插入一个或多个三元组</p>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL">INSERT DATA {RDF 三元组}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL">INSERT DATA &#123;RDF 三元组&#125;<br><br># &quot;;&quot; 用来连续插入头实体相同的三元组<br>INSERT DATA &#123;<br>    f1333 released 1999;<br>          type film;<br>          language English<br>&#125;<br></code></pre></td></tr></table></figure>
 
-# ";" 用来连续插入头实体相同的三元组
-INSERT DATA {
-    f1333 released 1999;
-          type film;
-          language English
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <h6 id="c-删除"><a href="#c-删除" class="headerlink" title="c. 删除"></a>c. 删除</h6><ul>
 <li><p><code>DELETE DATA</code>，删除一个或多个三元组，语法与  <code>INSERT DATA</code> 类似</p>
-<pre class="line-numbers language-SPARQL"><code class="language-SPARQL">DELETE DATA {RDF 三元组}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs SPARQL">DELETE DATA &#123;RDF 三元组&#125;<br></code></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <h4 id="8-2-语义数据搜索"><a href="#8-2-语义数据搜索" class="headerlink" title="8.2 语义数据搜索"></a>8.2 语义数据搜索</h4><p><img src="F:/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/pic/%E8%AF%AD%E4%B9%89%E6%90%9C%E7%B4%A2%E6%B5%81%E7%A8%8B.png" alt="语义搜索流程"></p>
@@ -3257,53 +3003,9 @@ INSERT DATA {
 
 
 
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
-<script>
-$(document).ready(function() {
 
-    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-    var countOffset = 20000;  // 初始化首次数据
-
-    function fixCount() {            
-       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
-        {
-            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
-            clearInterval(int);
-        }                  
-        if ($("#busuanzi_container_site_pv").css("display") != "none")
-        {
-            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
-            clearInterval(int); // 停止检测
-        }  
-    }
-        
-});
-</script> 
 
         
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
-
 
 
 
