@@ -4,6 +4,49 @@
   
     
     <entry>
+      <title>Improving Multi-hop Question Answering over Knowledge Graphs using Knowledge Base Embeddings</title>
+      <link href="/2020/06/26/Improving-Multi-hop-Question-Answering-over-Knowledge-Graphs-using-Knowledge-Base-Embeddings/"/>
+      <url>/2020/06/26/Improving-Multi-hop-Question-Answering-over-Knowledge-Graphs-using-Knowledge-Base-Embeddings/</url>
+      
+        <content type="html"><![CDATA[<h1 id="文章信息">1. 文章信息</h1><ul><li>Saxena, Apoorv, Aditay Tripathi, and Partha Talukdar. &quot;Improving Multi-hop Question Answering over Knowledge Graphs using Knowledge Base Embeddings.&quot;</li><li>ACL2020</li><li>MetaQA 数据集与 WebQuestionsSP 数据集</li><li><a href="https://github.com/malllabiisc/EmbedKGQA" target="_blank" rel="noopener">github</a></li></ul><h1 id="研究领域与目标">2. 研究领域与目标</h1><h2 id="研究领域">2.1 研究领域</h2><ul><li>基于知识图谱的问答系统构建</li></ul><h2 id="研究目标">2.2 研究目标</h2><ul><li>处理不完备知识图谱，导致问题的回答需要增加 hop 才可以搜索到答案的情况</li><li>处理多跳知识图谱问答</li></ul><h1 id="个人总结">3. 个人总结</h1><h2 id="优点">3.1 优点</h2><ul><li>引入知识图谱嵌入处理多跳知识图谱问答问题。</li><li>将问句当做关系，统一问句表达向量与关系向量的向量空间，进而<strong>统一知识图谱嵌入与问句答案预测的得分函数和损失函数</strong></li></ul><h2 id="可借鉴的技巧与方法">3.2 可借鉴的技巧与方法</h2><ul><li></li></ul><h2 id="不足与可能的改进方向">3.3 不足与可能的改进方向</h2><ul><li>将问句编码为一个单一的向量，包含噪声且表达能力弱</li><li>是否可以尝试将问句编码为路径？<ul><li>PTransE</li><li>利用注意力机制评估路径中每个关系的权重</li></ul></li><li>无法处理带有约束和聚合函数的复杂问句</li><li>是否可以尝试将基于语义解析的方法与该方法结合？<ul><li>staged query graph generation method</li></ul></li><li>限制了 hop 数</li><li>同样是否可以使用 staged query graph generation method？</li></ul><h1 id="问题定义">4. 问题定义</h1><ul><li>已知</li><li>一个知识图谱 $     $ ，其中的三元组表示为 $ (h, r, t) $ ，其中 $ h, t  $ ，$ r  $</li><li>一个问句 <span class="math inline">\(q\)</span></li><li>问句中的一个 topic entity <span class="math inline">\(e_h \in \mathcal{E}\)</span></li><li>目标</li><li>在知识图谱 <span class="math inline">\(\mathcal{K}\)</span> 中抽取一个可以正确回答问句 <span class="math inline">\(q\)</span> 的实体 <span class="math inline">\(e_t \in \mathcal{E}\)</span></li></ul><h1 id="方法">5. 方法</h1><h2 id="知识图谱嵌入">5.1 知识图谱嵌入</h2><ul><li>文中知识图谱嵌入选用的是 ComplEx embedding <a href="#%5B1%5D">[1]</a>，其 triple scoring function 表示为 <span class="math inline">\(\phi(h,r,t)\)</span></li></ul><h2 id="问句编码">5.2 问句编码</h2><ul><li><p>使用 RoBERTa 编码问句，然后再使用 4 层的使用 ReLU 为激活函数的全连接层将问句投影到复数空间，获得问句表达 <span class="math inline">\(e_q \in \mathbb{C}^d\)</span></p></li><li><p><strong>问句编码的学习与训练过程</strong></p></li><li>文中<strong>将问句编码的学习当做一个二分类问题</strong>，正确的答案标签为 1，错误答案的标签为0（当实体总数很大时，使用了 label smoothing）</li><li><p>给定一个问句 <span class="math inline">\(q\)</span>，问句中的一个 topic entity <span class="math inline">\(e_h \in \mathcal{E}\)</span>，以及真实答案集合 <span class="math inline">\(\mathcal{A} \subseteq \mathcal{E}\)</span>，文中希望学习一个问句编码来实现以下的目标</p></li></ul><p><span class="math display">\[  \phi(e_h, e_q, e_a) &gt; 0 \quad \forall a \in \mathcal{A} \\  \phi(e_h, e_q, e_\bar{a}) &lt; 0 \quad \forall \bar{a} \notin \mathcal{A}  \]</span></p><ul><li>因此文中在 scoring function 后，使用了 sigmoid 激活函数</li><li>然后最小化二元交叉熵损失函数</li></ul><h2 id="答案选择">5.3 答案选择</h2><ul><li><p>文中使用两个 score function 的组合来进行最终的答案实体选择</p></li><li><p>衡量 <strong>topic entity、问句与候选答案实体的分布相似度</strong>的 score：$ (e_h, e_q, e_{a'}) $</p></li><li><p>衡量<strong>关系匹配程度</strong>的 score</p></li><li>给定问句，来对问句所匹配的关系进行排名</li><li><p>同样使用 RoBERTa 编码问句，然后使用 dot 相似度评估问句与关系之间的相似程度，并对关系进行排名</p></li></ul><p><span class="math display">\[  h_q = \text{RoBERTa(q)} \\  S(r,q) = \text{sigmoid}(h_q^T h_r)  \]</span></p><ul><li><p>选取 <span class="math inline">\(S(r,q)\)</span> 大于 0.5 的所有关系，作为可能的关系集合 <span class="math inline">\(\mathcal{R}_a\)</span> 。同时找到 <span class="math inline">\(h\)</span> 和 <span class="math inline">\(a&#39;\)</span> 之间的最短路径上的关系的集合 <span class="math inline">\(\mathcal{R}_{a&#39;}\)</span></p></li><li><p>关系匹配程度的 score 定义为：<span class="math inline">\(\text{RelScore}_{a&#39;} = |\mathcal{R} \cap \mathcal{R}_{a&#39;}|\)</span></p></li><li><p>最终 entity 的选择方式为</p></li></ul><p><span class="math display">\[e_{ans} = \mathop{\arg\max}_{a&#39;\in \mathcal{E}}  \phi(e_h,e_q,e_{a&#39;}) + \gamma * \text{RelScore}_{a&#39;}\]</span></p><h2 id="实验设置与技巧">5.4 实验设置与技巧</h2><ul><li>针对 WebQuestionsSP 数据集，对 Freebase 中的事实进行简化，只保留了所有在问句中出现的 entity 的 2-hop 范围内的事实，同时只保留了包含数据集中出现的关系的事实。</li><li>对不完备知识图谱的模拟实验中，通过随机去除一半的事实来实现</li><li>评估 topic entity 和 answer entity 之间没有直接的路径，然后却有一定的信息来获得答案。文中通过删除知识图谱中的直接的路径的三元组来实现</li><li>在 MetaQA 数据集上的表现</li></ul><div class="figure"><img src="/2020/06/26/Improving-Multi-hop-Question-Answering-over-Knowledge-Graphs-using-Knowledge-Base-Embeddings/metaqa" alt="MetaQA"><p class="caption">MetaQA</p></div><ul><li>在 WebQuestionsSP 数据集上的表现</li></ul><div class="figure"><img src="/2020/06/26/Improving-Multi-hop-Question-Answering-over-Knowledge-Graphs-using-Knowledge-Base-Embeddings/webqsp.png" alt="WebQuestionsSP"><p class="caption">WebQuestionsSP</p></div><h1 id="关键参考文献">6. 关键参考文献</h1><p><a id="[1]">[1]</a> Theo Trouillon, JohannesWelbl, Sebastian Riedel, ´ Eric Gaussier, and Guillaume Bouchard. 2016. Complex embeddings for simple link prediction. In International Conference on Machine Learning, pages 2071–2080.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文 </category>
+          
+          <category> 期刊或会议 </category>
+          
+          <category> ACL </category>
+          
+          <category> ACL2020 </category>
+          
+          <category> 领域 </category>
+          
+          <category> 知识图谱 </category>
+          
+          <category> 知识图谱问答 </category>
+          
+          <category> 方法 </category>
+          
+          <category> 图嵌入算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 知识图谱 </tag>
+            
+            <tag> 知识图谱问答 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>知识图谱基础知识</title>
       <link href="/2020/06/25/knowledge-graph-book/"/>
       <url>/2020/06/25/knowledge-graph-book/</url>
@@ -26,9 +69,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 知识图谱 </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
