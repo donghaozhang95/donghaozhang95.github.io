@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/06/25/knowledge-graph-book/</loc>
+    
+    <lastmod>2020-06-28T03:22:50.573Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/06/26/Query-Graph-Generation-for-Answering-Multi-hop-Complex-Questions-from-Knowledge-Bases/</loc>
     
     <lastmod>2020-06-28T01:50:42.946Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://yoursite.com/2020/06/26/Improving-Multi-hop-Question-Answering-over-Knowledge-Graphs-using-Knowledge-Base-Embeddings/</loc>
     
     <lastmod>2020-06-27T02:15:43.443Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/06/25/knowledge-graph-book/</loc>
-    
-    <lastmod>2020-06-27T02:13:25.276Z</lastmod>
     
   </url>
   
