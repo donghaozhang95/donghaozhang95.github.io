@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/06/28/SPARQA-Skeleton-based-Semantic-Parsing-for-Complex-Questions-over-Knowledge-Bases/</loc>
+    
+    <lastmod>2020-06-28T08:39:11.784Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/06/25/knowledge-graph-book/</loc>
     
     <lastmod>2020-06-28T03:22:50.573Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2020/06/26/Query-Graph-Generation-for-Answering-Multi-hop-Complex-Questions-from-Knowledge-Bases/</loc>
     
     <lastmod>2020-06-28T01:50:42.946Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/06/28/SPARQA-Skeleton-based-Semantic-Parsing-for-Complex-Questions-over-Knowledge-Bases/</loc>
-    
-    <lastmod>2020-06-28T01:47:06.474Z</lastmod>
     
   </url>
   
