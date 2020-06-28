@@ -4,6 +4,47 @@
   
     
     <entry>
+      <title>SPARQA: Skeleton-based Semantic Parsing for Complex Questions over Knowledge Bases</title>
+      <link href="/2020/06/28/SPARQA-Skeleton-based-Semantic-Parsing-for-Complex-Questions-over-Knowledge-Bases/"/>
+      <url>/2020/06/28/SPARQA-Skeleton-based-Semantic-Parsing-for-Complex-Questions-over-Knowledge-Bases/</url>
+      
+        <content type="html"><![CDATA[<h1 id="文章信息">1. 文章信息</h1><ul><li>Sun, Yawei, et al. &quot;SPARQA: Skeleton-Based Semantic Parsing for Complex Questions over Knowledge Bases.&quot; <em>AAAI</em>. 2020.</li><li>AAAI2020</li><li>GraphQuestions 数据集与 ComplexWebQuestions version 1.1 数据集</li><li><a href="https://github.com/nju-websoft/SPARQA" target="_blank" rel="noopener">github</a></li></ul><h1 id="研究领域与目标">2. 研究领域与目标</h1><h2 id="研究领域">2.1 研究领域</h2><h2 id="研究目标">2.2 研究目标</h2><ul><li></li></ul><h1 id="个人总结">3. 个人总结</h1><h2 id="优点">3.1 优点</h2><ul><li></li></ul><h2 id="可借鉴的方法">3.2 可借鉴的方法</h2><ul><li></li></ul><h2 id="不足">3.3 不足</h2><ul><li></li></ul><h1 id="创新点">4. 创新点</h1><ul><li></li></ul><h1 id="问题定义">5. 问题定义</h1><ul><li></li></ul><h1 id="方法">6. 方法</h1><ul><li></li></ul><h1 id="论文讨论与总结">7. 论文讨论与总结</h1><ul><li></li></ul><h1 id="关键参考文献">8. 关键参考文献</h1><p>[1]</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文 </category>
+          
+          <category> 期刊或会议 </category>
+          
+          <category> AAAI </category>
+          
+          <category> AAAI2020 </category>
+          
+          <category> 领域 </category>
+          
+          <category> 知识图谱 </category>
+          
+          <category> 知识图谱问答 </category>
+          
+          <category> 方法 </category>
+          
+          <category> 语义解析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 知识图谱问答 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Query Graph Generation for Answering Multi-hop Complex Questions from Knowledge Bases</title>
       <link href="/2020/06/26/Query-Graph-Generation-for-Answering-Multi-hop-Complex-Questions-from-Knowledge-Bases/"/>
       <url>/2020/06/26/Query-Graph-Generation-for-Answering-Multi-hop-Complex-Questions-from-Knowledge-Bases/</url>
@@ -37,8 +78,6 @@
         <tags>
             
             <tag> 知识图谱问答 </tag>
-            
-            <tag> 知识图谱 </tag>
             
         </tags>
       
