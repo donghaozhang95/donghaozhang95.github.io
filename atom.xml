@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-28T08:39:11.784Z</updated>
+  <updated>2020-06-29T02:30:09.378Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《知识图谱与深度学习》读书笔记</title>
+    <link href="http://yoursite.com/2020/06/29/knowledge-graph-and-deep-learning/"/>
+    <id>http://yoursite.com/2020/06/29/knowledge-graph-and-deep-learning/</id>
+    <published>2020-06-29T01:05:47.000Z</published>
+    <updated>2020-06-29T02:30:09.378Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="绪论">1. 绪论</h1><ul><li>知识图谱原本是谷歌知识搜索功能的产品名称，而后成为各类结构化知识库的统称</li><li><strong>知识图谱</strong>就是将人类知识结构化形成的知识系统，其中包含基本事实、通用规则和其他有关的结构化信息，可用于信息检索、推理决策等智能任务。</li><li>按照类型划分，知识图谱可以包含<strong>语言知识、常识知识、世界知识、认知知识、专业知识等</strong>。<ul><li>语言知识：包括词法、语法、语义或语用等方面的知识，如 WordNet、HowNet</li><li>常识知识：泛指普通人应当具备的基本知识信息，如 Cyc、ConceptNet</li><li>世界知识：现实世界中各实体间关系的事实知识，如 WikiData、Freebase、DBpedia、YAGO</li><li>认知知识：是人类理解世界所具备的知识，如隐喻知识等</li><li>专业知识：各专业领域的特定知识</li></ul></li><li><strong>本书主要关注世界知识与语言知识。</strong><ul><li><strong>世界知识图谱（Freebase 为代表）</strong>将世界上的具象事物和抽象概念表示为实体，将实体之间的联系表示为关系，常以三元组事实的形式存储实体与实体之间的关系，类似于资源描述框架 RDF</li><li><strong>语言知识图谱（HowNet 为代表）</strong>有很多不同的知识类型好标注方式，本书主要关注基于义原（语义原子）的词汇知识图谱 HowNet</li></ul></li><li>深度学习仍然是对已有数据的拟合，缺乏对数据的真正理解能力，因此只能做到机械地 “举百反一”，而不能像人类那样 “举一反三”（零次 / 少次学习，zero / few shot learning）</li><li><strong>数据智能与知识智能的融合</strong>所面临的关键问题<ul><li>知识表示问题。深度学习采用分布式表示，知识图谱采用符号表示</li><li>知识获取问题。如何从互联网大规模的结构化数据、半结构数据和无结构数据中自动获取知识，辅以少量人工校验，是大规模知识图谱构建的必由之路</li><li>知识计算问题。如何面向不同自然语言处理任务和深度学习模型，将知识合理地嵌入与融合，实现知识指导的自然语言理解</li></ul></li></ul><h1 id="世界知识图谱">2. 世界知识图谱</h1><h3 id="世界知识的表示学习">2.1 世界知识的表示学习</h3><ul><li><strong>原始符号表示的大规模知识图谱在计算利用上面临如下挑战</strong>：<code>~Page 9~</code><ul><li>计算效率低下。利用知识图谱进行检索与多步推理时，尝尝需要设计专门的计算复杂度高且难以扩展的图算法以完成任务</li><li>数据稀疏性强。实体与关系存在着长尾分布，有很多实体只存在着极少数的关系与之相连</li></ul></li><li>近年提出了<strong>知识表示学习（Knowledge Representation Learning，KRL）</strong>的技术方案，将实体或关系的语义信息映射到低维稠密实值的向量空间中。其<strong>优势</strong>如下：<code>~Page 9~</code><ul><li>低维向量提高计算效率</li><li>分布式表示便于计算相似度</li><li>将多源异质信息映射到同一语义空间，建立多源跨模态的信息交互，且分布式表示能便捷地融入深度学习的模型框架中</li></ul></li><li>探索了考虑各种外部信息来提升知识表示学习性能的可行性，如复杂关系类型，关系路径，实体描述信息，综合考虑实体、属性与关系信息，实体图像信息等。<code>~Page 10~</code></li></ul><h3 id="世界知识的自动获取">2.2 世界知识的自动获取</h3><ul><li>基于远程监督的关系抽取，数据获取过程会不可避免地引入噪声标注（句子级别的注意力机制、对抗训练机制），会显著影响关系抽取模型的性能。此外如何利用已有的知识图谱和文本数据进行关系抽取（知识注意力机制），如何充分利用多语言文本数据进行关系抽取（跨语言注意力机制），都是<strong>关系抽取模型面临的挑战性问题</strong>。<code>~Page 12~</code></li></ul><h3 id="世界知识的计算应用">2.3 世界知识的计算应用</h3><ul><li>深度学习以前，知识图谱只能基于离散符号的形式进行使用，往往采用以下使用方式：<code>~Page 13~</code><ul><li>作为信息资源。根据用户查询提及的实体名称，展示实体的结构化信息</li><li>作为数据特征。以语言知识图谱为例，知识图谱中的词汇知识可以为词汇增加额外的特征信息，并用作下游任务，如情感分析等</li><li>利用网络结构。利用网络结构完成问答任务、建立不同关系之间的推理规则、计算不同节点之间的相似度（最短路径）</li></ul></li><li>深度学习的发展下（知识表示学习），可以利用知识图谱为文本中提及的词汇和实体提供丰富的外部信息，在探索改进深度学习的鲁棒性、可解释性、弱标注学习、少次学习等能力的过程中发挥关键作用。<code>~Page 13~</code></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      《知识图谱与深度学习》--刘知远，读书笔记
+    
+    </summary>
+    
+    
+      <category term="理论" scheme="http://yoursite.com/categories/%E7%90%86%E8%AE%BA/"/>
+    
+      <category term="知识图谱" scheme="http://yoursite.com/categories/%E7%90%86%E8%AE%BA/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
+    
+    
+      <category term="知识图谱理论" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%90%86%E8%AE%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>SPARQA: Skeleton-based Semantic Parsing for Complex Questions over Knowledge Bases</title>
