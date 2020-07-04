@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-29T02:30:09.378Z</updated>
+  <updated>2020-07-04T12:19:58.294Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,109 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Simplify the Usage of Lexicon in Chinese NER</title>
+    <link href="http://yoursite.com/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/"/>
+    <id>http://yoursite.com/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/</id>
+    <published>2020-07-04T12:19:58.000Z</published>
+    <updated>2020-07-04T12:19:58.294Z</updated>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hierarchically-Refined Label Attention Network for Sequence Labeling</title>
+    <link href="http://yoursite.com/2020/07/04/Hierarchically-Refined-Label-Attention-Network-for-Sequence-Labeling/"/>
+    <id>http://yoursite.com/2020/07/04/Hierarchically-Refined-Label-Attention-Network-for-Sequence-Labeling/</id>
+    <published>2020-07-04T08:55:58.000Z</published>
+    <updated>2020-07-04T12:19:18.942Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="文章信息">1. 文章信息</h1><ul><li>Cui, Leyang, and Yue Zhang. &quot;Hierarchically-refined label attention network for sequence labeling.&quot; arXiv preprint arXiv:1908.08676 (2019).</li><li>EMNLP 2019</li><li>数据集：<ul><li>POS tagging<ul><li>the Wall Street Journal (WSJ) portion of the Penn Treebank (PTB) （英语）</li><li>treebanks from Universal Dependencies(UD) v2.2 （多语言）</li></ul></li><li>NER<ul><li>OntoNotes 5.0</li></ul></li></ul></li><li><a href="https://github.com/Nealcly/BiLSTM-LAN" target="_blank" rel="noopener">github</a></li></ul><h1 id="研究领域与目标">2. 研究领域与目标</h1><h2 id="研究领域">2.1 研究领域</h2><ul><li>序列标注</li></ul><h2 id="研究目标">2.2 研究目标</h2><ul><li>针对传统序列标注问题的推断层中使用 CRF 导致计算效率较低，使用 Softmax 导致忽略了标签之间的关系的情况，设计一种网络以兼顾效率与准确率</li></ul><h1 id="个人总结">3. 个人总结</h1><h2 id="优点">3.1 优点</h2><ul><li>依靠多层叠加编码标签与标签之间的依赖</li></ul><h1 id="问题定义">4. 问题定义</h1><ul><li>输入为自然语言序列 <span class="math inline">\(x = \{ x_1, \dots , x_n \}\)</span></li><li>输出为标签序列 <span class="math inline">\(y = \{ y_1, \dots , y_n \}\)</span>，其中 <span class="math inline">\(y_i \in \{ l_1, \dots, l_{|L|} \}\)</span></li></ul><h1 id="方法">5. 方法</h1><h2 id="baseline">5.1 Baseline</h2><h3 id="词表示层word-representation-layer">5.1.1 词表示层（word representation layer）</h3><ul><li>将字符嵌入与词嵌入 concatenate 起来<ul><li>其中针对<strong>字符嵌入</strong>，使用 Bi-LSTM</li></ul></li></ul><h3 id="序列表示层sequence-representation-layer">5.1.2 序列表示层（sequence representation layer）</h3><ul><li>Bi-LSTM，获得 <span class="math inline">\(\{ h_1, \dots , h_n \}\)</span></li></ul><h3 id="推断层inference-layer">5.1.3 推断层（inference layer）</h3><ul><li><p><strong>CRF</strong>，其中 <span class="math inline">\(\mathcal{Y_x}\)</span> 代表在序列 <span class="math inline">\(x\)</span> 的情况下所有可能的标签序列 <span class="math display">\[P(y|x) = \frac{\prod_{t=1}^n \exp(W_{y_{t-1},y_t}^T h_t + b_{y_{t-1},y_{t}})}{ \sum_{y&#39; \in \mathcal{Y_x}} \prod_{t=1}^n \exp(W_{y&#39;_{t-1},y&#39;_t}^T h_t + b_{y&#39;_{t-1},y&#39;_{t}}) }\]</span></p></li><li><strong>Softmax</strong>，与 CRF 相比，有两点不同：<ul><li>模型参数与当前时刻的标签无关，且与上一时刻的标签也无关</li><li>Softmax 在当前时刻的标签上归一化，而 CRF 在所有的标签搜索空间进行归一化 <span class="math display">\[ y_i = \text{softmax}(W^T h_i+b) \]</span></li></ul></li></ul><h2 id="标签注意力网络label-attention-network-lan">5.2 标签注意力网络（label attention network, LAN）</h2><ul><li>针对<strong>序列表示层和推断层</strong>进行修改和融合，去除推断层，将推断融合到序列表示中</li><li><strong>整体结构为</strong>：<ul><li>词表示层</li><li>多层 Bi-LSTM-LAN</li></ul></li></ul><div class="figure"><img src="/2020/07/04/Hierarchically-Refined-Label-Attention-Network-for-Sequence-Labeling/framework.png" alt="Framework"><p class="caption">Framework</p></div><ul><li>每个标签使用<strong>标签嵌入</strong>，整合使用 <span class="math inline">\(x^l \in \mathbb{R}^{|L| \times d_h}\)</span> 进行表示</li><li><strong>Bi-LSTM-LAN</strong><ul><li>Bi-LSTM Encoding Sublayer，获得 <span class="math inline">\(H^w\)</span></li><li>Label-Attention Inference Sublayer<ul><li>使用多头注意力机制（相比于 Transformer 中的多头注意力机制，没有使用 <span class="math inline">\(W^O\)</span>，且增加了残差连接），其中 <span class="math inline">\(Q = H^w, K,V=x^l\)</span> <span class="math display">\[ H^l = \text{concat}(head_1, \dots , head_k) + H^w \\head_i = \text{attention}(QW_i^Q, KW_i^K, VW_i^V) = \alpha VW_i^V \]</span></li><li>最终使用 <span class="math inline">\(H^w\)</span> 与 <span class="math inline">\(H^l\)</span> 的 concatenation 作为 Bi-LSTM-LAN 的输出表示 <span class="math inline">\(H=[H^w;H^l]\)</span></li></ul></li></ul></li><li><strong>输出</strong><ul><li>设置最后一层的 Bi-LSTM-LAN 头数为 1，且使用 Label-Attention Inference Sublayer 中多头注意力机制里句子和标签对应的权重 <span class="math inline">\(\alpha \in \mathbb{R}^{n \times |L|}\)</span>，作为模型预测的语句每个位置的标签的概率</li><li>使用句子中每个位置概率最高的标签作为模型在该位置的预测标签</li></ul></li><li><strong>一层的 Bi-LSTM-LAN 与单层的 Bi-LSTM-softmax 相同</strong></li></ul><h2 id="实验设置">5.3 实验设置</h2><ul><li>100 维的 GloVe 作为词嵌入</li></ul><div class="figure"><img src="/2020/07/04/Hierarchically-Refined-Label-Attention-Network-for-Sequence-Labeling/WSJ.png" alt="WSJ"><p class="caption">WSJ</p></div><div class="figure"><img src="/2020/07/04/Hierarchically-Refined-Label-Attention-Network-for-Sequence-Labeling/UD.png" alt="UD"><p class="caption">UD</p></div><div class="figure"><img src="/2020/07/04/Hierarchically-Refined-Label-Attention-Network-for-Sequence-Labeling/ontonotes.png" alt="OntoNotes 5.0"><p class="caption">OntoNotes 5.0</p></div>]]></content>
+    
+    <summary type="html">
+    
+      针对传统序列标注问题的推断层中使用 CRF 导致计算效率较低，使用 Softmax 导致忽略了标签之间的关系的情况，文中设计了 Label Attention Network (LAN)。通过将 Bi-LSTM 与 LAN 相融合，进行序列标签推断。
+    
+    </summary>
+    
+    
+      <category term="论文" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/"/>
+    
+      <category term="期刊或会议" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/"/>
+    
+      <category term="EMNLP" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/EMNLP/"/>
+    
+      <category term="EMNLP2019" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/EMNLP/EMNLP2019/"/>
+    
+      <category term="领域" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E9%A2%86%E5%9F%9F/"/>
+    
+      <category term="NER" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E9%A2%86%E5%9F%9F/NER/"/>
+    
+      <category term="通用 NER" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E9%A2%86%E5%9F%9F/NER/%E9%80%9A%E7%94%A8-NER/"/>
+    
+      <category term="方法" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="Attention" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%96%B9%E6%B3%95/Attention/"/>
+    
+    
+      <category term="NER" scheme="http://yoursite.com/tags/NER/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dialog-to-Action: Conversational Question Answering Over a Large-Scale Knowledge Base</title>
+    <link href="http://yoursite.com/2020/06/29/Dialog-to-Action-Conversational-Question-Answering-Over-a-Large-Scale-Knowledge-Base/"/>
+    <id>http://yoursite.com/2020/06/29/Dialog-to-Action-Conversational-Question-Answering-Over-a-Large-Scale-Knowledge-Base/</id>
+    <published>2020-06-29T06:25:02.000Z</published>
+    <updated>2020-06-29T06:49:46.717Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="文章信息">1. 文章信息</h1><ul><li>Guo, Daya, et al. &quot;Dialog-to-action: Conversational question answering over a large-scale knowledge base.&quot; <em>Advances in Neural Information Processing Systems</em>. 2018.</li><li>NeurIPS2018</li><li>CSQA 数据集</li><li><a href="https://github.com/guoday/Dialog-to-Action" target="_blank" rel="noopener">github</a></li></ul><h1 id="研究领域与目标">2. 研究领域与目标</h1><h2 id="研究领域">2.1 研究领域</h2><ul><li>知识图谱多轮问答</li><li>seq2seq</li><li>语义解析</li></ul><h2 id="研究目标">2.2 研究目标</h2><ul><li>针对基于知识图谱的多轮对话中经常出现的省略的现象，文中提出了对话记忆管理，来操纵历史实体、谓语、以及逻辑形式</li><li>设置了 21 种动作，并使用 seq2seq 的方式生成动作序列，以实现问句及历史对话信息对应在知识图谱中可执行的逻辑形式的生成</li><li>针对现有数据集逻辑形式难以获得的情况，文中使用一种启发式的广度优先搜索算法，生成动作序列标签</li></ul><h1 id="个人总结">3. 个人总结</h1><h2 id="优点">3.1 优点</h2><ul><li></li></ul><h2 id="可借鉴的方法">3.2 可借鉴的方法</h2><ul><li></li></ul><h2 id="不足">3.3 不足</h2><ul><li></li></ul><h1 id="创新点">4. 创新点</h1><ul><li></li></ul><h1 id="问题定义">5. 问题定义</h1><ul><li></li></ul><h1 id="方法">6. 方法</h1><h2 id="动作定义grammar">6.1 动作定义（Grammar）</h2><h2 id="编码器">6.2 编码器</h2><h2 id="语法指引的解码器">6.3 语法指引的解码器</h2><h2 id="对话记忆">6.4 对话记忆</h2><h2 id="在解码器中引入对话记忆">6.5 在解码器中引入对话记忆</h2><h2 id="训练与推理">6.6 训练与推理</h2><ul><li></li></ul><h1 id="论文讨论与总结">7. 论文讨论与总结</h1><ul><li></li></ul><h1 id="关键参考文献">8. 关键参考文献</h1><p>[1]</p>]]></content>
+    
+    <summary type="html">
+    
+      论文主要希望将多轮对话映射到在大型知识图谱上可执行的逻辑形式，从而可以针对用户的问句，返回正确的答案。所提出的模型整体架构为 seq2seq 架构，输出生成逻辑形式所需的动作序列。同时，为了处理多轮对话中经常出现的省略的现象（ellipsis phenomena），文中提出了对话记忆管理，来操纵历史实体、谓语、以及逻辑形式。另外，文中训练的过程不需要显示标注逻辑形式，而是使用一种启发式的广度优先搜索算法，生成动作序列标签。
+    
+    </summary>
+    
+    
+      <category term="论文" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/"/>
+    
+      <category term="期刊或会议" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/"/>
+    
+      <category term="NeurIPS" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/NeurIPS/"/>
+    
+      <category term="NeurIPS2018" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/NeurIPS/NeurIPS2018/"/>
+    
+      <category term="领域" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E9%A2%86%E5%9F%9F/"/>
+    
+      <category term="知识图谱" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E9%A2%86%E5%9F%9F/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
+    
+      <category term="知识图谱多轮问答" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E9%A2%86%E5%9F%9F/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%A4%9A%E8%BD%AE%E9%97%AE%E7%AD%94/"/>
+    
+      <category term="方法" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="语义解析" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%96%B9%E6%B3%95/%E8%AF%AD%E4%B9%89%E8%A7%A3%E6%9E%90/"/>
+    
+      <category term="seq2seq" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%96%B9%E6%B3%95/seq2seq/"/>
+    
+    
+      <category term="知识图谱多轮问答" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%A4%9A%E8%BD%AE%E9%97%AE%E7%AD%94/"/>
+    
+  </entry>
   
   <entry>
     <title>《知识图谱与深度学习》读书笔记</title>
@@ -69,9 +172,9 @@
     
       <category term="方法" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%96%B9%E6%B3%95/"/>
     
-      <category term="AAAI" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/AAAI/"/>
-    
       <category term="语义解析" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%96%B9%E6%B3%95/%E8%AF%AD%E4%B9%89%E8%A7%A3%E6%9E%90/"/>
+    
+      <category term="AAAI" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/AAAI/"/>
     
       <category term="AAAI2020" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/AAAI/AAAI2020/"/>
     
