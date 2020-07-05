@@ -88,7 +88,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="NER," />
 
 
 
@@ -101,15 +101,23 @@
 
 
 
+<meta name="description" content="针对中文语句的处理，当前深度学习模型以字符为基础，然而这忽略了词的信息。针对该问题，Lattice-LSTM 在 2018 年被提出，其在字符的基础上，引入了词典，丰富了字符的信息。然而其所设计的模型结构复杂度较高，针对该问题，本文设计了一个简单但是有效的方法来引入词典信息到字符的向量表达中，以降低模型的复杂度，提高模型的推断速度。所提出的方法只简单的调整了字符表达，而不需要影响原始以字符为基础的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Simplify the Usage of Lexicon in Chinese NER">
 <meta property="og:url" content="http://yoursite.com/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/index.html">
 <meta property="og:site_name" content="Donghao&#39;s Blog">
+<meta property="og:description" content="针对中文语句的处理，当前深度学习模型以字符为基础，然而这忽略了词的信息。针对该问题，Lattice-LSTM 在 2018 年被提出，其在字符的基础上，引入了词典，丰富了字符的信息。然而其所设计的模型结构复杂度较高，针对该问题，本文设计了一个简单但是有效的方法来引入词典信息到字符的向量表达中，以降低模型的复杂度，提高模型的推断速度。所提出的方法只简单的调整了字符表达，而不需要影响原始以字符为基础的">
 <meta property="og:locale" content="zh">
+<meta property="og:image" content="http://yoursite.com/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/OntoNotes.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/msra.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/weibo.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/resume.png">
 <meta property="article:published_time" content="2020-07-04T12:19:58.000Z">
-<meta property="article:modified_time" content="2020-07-04T12:19:58.294Z">
+<meta property="article:modified_time" content="2020-07-05T03:46:49.071Z">
 <meta property="article:author" content="Donghao Zhang">
+<meta property="article:tag" content="NER">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/OntoNotes.png">
 
 
 
@@ -364,12 +372,122 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-04T20:19:58+08:00">
-                2020-07-04
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-05T11:46:49+08:00">
+                2020-07-05
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/" itemprop="url" rel="index">
+                    <span itemprop="name">论文</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">期刊或会议</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/ACL/" itemprop="url" rel="index">
+                    <span itemprop="name">ACL</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/%E6%9C%9F%E5%88%8A%E6%88%96%E4%BC%9A%E8%AE%AE/ACL/ACL2020/" itemprop="url" rel="index">
+                    <span itemprop="name">ACL2020</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/%E9%A2%86%E5%9F%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">领域</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/%E9%A2%86%E5%9F%9F/NER/" itemprop="url" rel="index">
+                    <span itemprop="name">NER</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/%E9%A2%86%E5%9F%9F/NER/%E4%B8%AD%E6%96%87-NER/" itemprop="url" rel="index">
+                    <span itemprop="name">中文 NER</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/%E6%96%B9%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">方法</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87/%E6%96%B9%E6%B3%95/%E5%BC%95%E5%85%A5%E8%AF%8D%E5%85%B8/" itemprop="url" rel="index">
+                    <span itemprop="name">引入词典</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -413,7 +531,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  1.5k
                 </span>
               
 
@@ -429,13 +547,25 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  6
                 </span>
               
             </div>
           
 
           
+              <div class="post-description">
+                  针对中文语句的处理，当前深度学习模型以字符为基础，然而这忽略了词的信息。针对该问题，Lattice-LSTM 在 2018 年被提出，其在字符的基础上，引入了词典，丰富了字符的信息。然而其所设计的模型结构复杂度较高，针对该问题，本文设计了一个简单但是有效的方法来引入词典信息到字符的向量表达中，以降低模型的复杂度，提高模型的推断速度。所提出的方法只简单的调整了字符表达，而不需要影响原始以字符为基础的深度学习模型结构。
+              </div>
+          
+          
+            <div class="post-tags">
+              <center>
+              
+                <a href="/tags/NER/" rel="tag"><i class="fa fa-tag"></i> NER</a>
+              
+              </center>
+            </div>
           
         </div>
       </header>
@@ -450,7 +580,116 @@
       
   
       
-        
+        <h1 id="文章信息">1. 文章信息</h1>
+<ul>
+<li>Peng, Minlong, et al. &quot;Simplify the Usage of Lexicon in Chinese NER.&quot; arXiv preprint arXiv:1908.05969 (2019).</li>
+<li>ACL 2020</li>
+<li>数据集
+<ul>
+<li>OntoNotes</li>
+<li>MSRA</li>
+<li>Weibo</li>
+<li>Resume</li>
+</ul></li>
+<li><a href="https://github.com/v-mipeng/LexiconAugmentedNER" target="_blank" rel="noopener">github</a></li>
+</ul>
+<h1 id="研究领域与目标">2. 研究领域与目标</h1>
+<h2 id="研究领域">2.1 研究领域</h2>
+<ul>
+<li>中文 NER</li>
+</ul>
+<h2 id="研究目标">2.2 研究目标</h2>
+<ul>
+<li>针对 Lattice-LSTM 在引入词典信息时设计的复杂的模型结构，文中设计了一个简单但是有效的方法来引入词典信息到字符的向量表达，降低模型的复杂度，提高模型的推断速度。</li>
+<li>所提出的方法只简单的调整了字符表达，而不需要影响原始以字符为基础的深度学习模型结构。</li>
+</ul>
+<h1 id="个人总结">3. 个人总结</h1>
+<h2 id="优点">3.1 优点</h2>
+<ul>
+<li>将词典信息融入字符嵌入，来简化模型</li>
+</ul>
+<h2 id="不足">3.2 不足</h2>
+<ul>
+<li>忽略了整体句子语义以及 segmentation label 对词语集合权重选择的影响</li>
+<li>在所提出的第2种方法中未引入 segmentation label 标签嵌入</li>
+</ul>
+<h1 id="问题定义">4. 问题定义</h1>
+<ul>
+<li>一个字符序列为 <span class="math inline">\(s=\{ c_1, \dots, c_n \}\)</span></li>
+</ul>
+<h1 id="方法">5. 方法</h1>
+<h2 id="通用基于字符的中文-ner-模型">5.1 通用基于字符的中文 NER 模型</h2>
+<h3 id="字符表示层character-representation-layer">5.1.1 字符表示层（character representation layer）</h3>
+<ul>
+<li>使用 <strong>char+bi-char</strong> 的形式：<span class="math inline">\(x_i^c = [e^c(c_i) \oplus e^b(c_i,c_{i+1})]\)</span></li>
+</ul>
+<h3 id="序列表示层sequence-representation-layer">5.1.2 序列表示层（sequence representation layer）</h3>
+<ul>
+<li><strong>Bi-LSTM</strong></li>
+<li><strong>CNN</strong>
+<ul>
+<li>针对输入 <span class="math inline">\(x^c\)</span>，首先使用 1 层的 kernel size 为 1 的 1 维卷积，后接 tanh 进行处理</li>
+<li>然后使用多层的 kernel size 为 3，激活函数为 tanh 的 1 维卷积</li>
+<li>（各个 tanh 之前使用 dropout）</li>
+</ul></li>
+<li><strong>Transformer</strong></li>
+</ul>
+<h3 id="推断层inference-layer">5.1.3 推断层（inference layer）</h3>
+<ul>
+<li><strong>CRF</strong>，其中 <span class="math inline">\(\mathcal{Y_x}\)</span> 代表在序列 <span class="math inline">\(x\)</span> 的情况下所有可能的标签序列 <span class="math display">\[P(y|x) = \frac{\prod_{t=1}^n \exp(W_{y_{t-1},y_t}^T h_t + b_{y_{t-1},y_{t}})}{ \sum_{y&#39; \in \mathcal{Y_x}} \prod_{t=1}^n \exp(W_{y&#39;_{t-1},y&#39;_t}^T h_t + b_{y&#39;_{t-1},y&#39;_{t}}) }\]</span></li>
+</ul>
+<h2 id="lattice-lstm">5.2 Lattice-LSTM</h2>
+<ul>
+<li>Lattice-LSTM 是对上述序列表示层的一种增强，其引入词典来增加模型的词义信息</li>
+<li>当 <span class="math inline">\(\{ c_i, \dots, c_j \}\)</span> 匹配到词典中的一个词时，它在 <span class="math inline">\(c_i\)</span> 和 <span class="math inline">\(c_j\)</span> 之间添加一个有向边，进而将一个字符序列转化为一个<strong>图结构</strong></li>
+<li>Lattice-LSTM 通过修改 LSTM 来引入这种图结构信息
+<ul>
+<li>若使用 <span class="math inline">\(s_{&lt;*,j&gt;}\)</span> 代表一个以 <span class="math inline">\(c_j\)</span> 为结尾字符且匹配到词典中某个词的字符序列的集合，使用 <span class="math inline">\(h_{&lt;*,j&gt;} = \{ h_i, \forall s_{&lt;i,j&gt;} \in s_{&lt;*,j&gt;} \}\)</span> 代表对应的隐藏状态（hidden state）集合，同理还可得到 <span class="math inline">\(c_{&lt;*,j&gt;}\)</span></li>
+<li>最终 Lattice-LSTM 设计了一个模型，使得当前时刻输出的单元状态 <span class="math inline">\(c_{j}\)</span> 与隐藏状态 <span class="math inline">\(h_{j}\)</span>和 <span class="math inline">\((h_{j-1}, c_{j-1}, x_j^c, s_{&lt;*,j&gt;}, h_{&lt;*,j&gt;} c_{&lt;*,j&gt;})\)</span> 相关</li>
+</ul></li>
+<li>文中认为，<strong>Lattice-LSTM 表现的提升主要来自两个方面</strong>
+<ul>
+<li>保存了每个字符所有可能匹配到的词的信息</li>
+<li>引入词嵌入，增强字符表达</li>
+</ul></li>
+</ul>
+<h2 id="文中提出的模型">5.3 文中提出的模型</h2>
+<ul>
+<li>Lattice-LSTM 的复杂结构导致模型的复杂度较高，推断速度较慢</li>
+<li>受到 Softword 技术的启发，使用语料库和分割标签（segmentation label，<span class="math inline">\(\mathcal{Y}_{seg}=\{ \text{B,M,E,S} \}\)</span>，分别代表对应的字符位于一个单词的起始、中间、结束、以及单个字符构成一个词）构建了一个<strong>词分割器</strong></li>
+<li><span class="math inline">\(\textit{ExSoftword}\)</span>
+<ul>
+<li>比如一个句子为 <span class="math inline">\(s=\{ c_1, c_2, c_3, c_4, c_5 \}\)</span>，如果其中有两个匹配的词 <span class="math inline">\(\{ c_1, c_2, c_3, c_4 \}\)</span> 以及 <span class="math inline">\(\{ c_3, c_4 \}\)</span>，则对应的分割标签序列为 <span class="math inline">\(seg(s)=\{ \{ \text{B} \}, \{ \text{M} \}, \{ \text{B, M} \}, \{ \text{E} \}, \{ \text{O} \} \}\)</span>，其中 <span class="math inline">\(seg(s)_3\)</span> 代表了在 <span class="math inline">\(c_3\)</span> 处，<strong>至少</strong>有一个词以 <span class="math inline">\(c_3\)</span> 为起始字符，且 <span class="math inline">\(c_3\)</span> <strong>至少</strong>位于一个词中间</li>
+<li>然后就可以使用一个 5 维的 binary vector 来表示语句中每个字符的分割标签，其中 5 个维度分别对应了 <span class="math inline">\(\{ \text{B,M,E,S,O} \}\)</span></li>
+<li>然后使用一个嵌入矩阵将 <span class="math inline">\(seg(s)\)</span> 映射到低维稠密空间，并将其与 char+bi-char 的形式表示的 <span class="math inline">\(x^c\)</span> concat 起来作为序列表示层的输入</li>
+<li>这种表示方式在文中本称作 <span class="math inline">\(\textit{ExSoftword}\)</span>，然而这种方式无法引入词嵌入，并且丢失了很多分割信息（<strong>无法基于 segmentation label 重建词典的匹配结果</strong>）</li>
+</ul></li>
+<li><strong>方法 2</strong>
+<ul>
+<li>句子中的每个词 <span class="math inline">\(c\)</span> 对应了 4 个词的集合，标志了 4 个 segmentation label，比如 <span class="math inline">\(\text{B}(c)\)</span> 代表以 <span class="math inline">\(c\)</span> 为起始字符的所有的词的集合， <span class="math inline">\(\text{M}(c)\)</span> 代表包含 <span class="math inline">\(c\)</span> 的所有的词的集合等。如果这 4 个词的集合为空，则增加一个特殊的词 <span class="math inline">\(&quot;\text{NONE}&quot;\)</span> 来表示</li>
+<li>然后将这 4 个词的集合的表达 concat 起来，并 与 char+bi-char 的形式表示的 <span class="math inline">\(x^c\)</span> concat 起来作为序列表示层的输入 <span class="math display">\[ x^c \leftarrow [x^c ; v^s(\text{B}); v^s(\text{M}); v^s(\text{E}); v^s(\text{S})]\]</span> 其中关键的是 <span class="math inline">\(v^s\)</span> 即<strong>如何将一个词的集合映射为一个固定维度的向量</strong></li>
+<li>关于 <span class="math inline">\(v^s\)</span> 文中尝试了两种方式
+<ul>
+<li>使用 mean-pooling 算法</li>
+<li>使用词频作为一种启发式的权重计算方法，对词的集合中的每个词使用不同的词频
+<ul>
+<li>idea：一个字符序列出现在数据集中的频率越高，则越可能是一个词</li>
+<li>使用 <span class="math inline">\(z(w)\)</span> 代表 <span class="math inline">\(w\)</span>（当 <span class="math inline">\(w\)</span> 在数据集的句子中被另一个词覆盖，则不增加该词的词频）出现在数据集中的频率（文中<strong>数据集使用训练集和测试集</strong>）</li>
+<li><span class="math inline">\(v^s(S)=\frac{1}{Z}\sum_{w \in S} z(w) e^w(w)\)</span>，<span class="math inline">\(e^w(w)\)</span> 为词嵌入，<span class="math inline">\(Z=\sum_{w \in \text{B}\cup \text{M}\cup \text{E}\cup \text{S} } z(w)\)</span></li>
+<li>同时为了增加罕见词的权重，引入了平滑，<span class="math inline">\(v^s(S)=\frac{1}{Z}\sum_{w \in S} (z(w)+c) e^w(w)\)</span>，<span class="math inline">\(Z=\sum_{w \in \text{B}\cup \text{M}\cup \text{E}\cup \text{S} } z(w) + c\)</span></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="实验设置">5.4 实验设置</h2>
+<ul>
+<li><p>OntoNotes <img src="/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/OntoNotes.png" alt="OntoNotes"></p></li>
+<li><p>MSRA <img src="/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/msra.png" alt="MSRA"></p></li>
+<li><p>Weibo <img src="/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/weibo.png" alt="Weibo"></p></li>
+<li><p>Resume <img src="/2020/07/04/Simplify-the-Usage-of-Lexicon-in-Chinese-NER/resume.png" alt="Resume"></p></li>
+</ul>
+<h1 id="关键参考文献">8. 关键参考文献</h1>
+<p>[1] Yue Zhang and Jie Yang. 2018. Chinese ner using lattice lstm. Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (ACL), 1554-1564.</p>
 
       
     </div>
@@ -547,8 +786,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -578,7 +826,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -648,6 +896,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文章信息"><span class="nav-text">1. 文章信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#研究领域与目标"><span class="nav-text">2. 研究领域与目标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#研究领域"><span class="nav-text">2.1 研究领域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#研究目标"><span class="nav-text">2.2 研究目标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#个人总结"><span class="nav-text">3. 个人总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-text">3.1 优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不足"><span class="nav-text">3.2 不足</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题定义"><span class="nav-text">4. 问题定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-text">5. 方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通用基于字符的中文-ner-模型"><span class="nav-text">5.1 通用基于字符的中文 NER 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符表示层character-representation-layer"><span class="nav-text">5.1.1 字符表示层（character representation layer）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列表示层sequence-representation-layer"><span class="nav-text">5.1.2 序列表示层（sequence representation layer）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推断层inference-layer"><span class="nav-text">5.1.3 推断层（inference layer）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lattice-lstm"><span class="nav-text">5.2 Lattice-LSTM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文中提出的模型"><span class="nav-text">5.3 文中提出的模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验设置"><span class="nav-text">5.4 实验设置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键参考文献"><span class="nav-text">8. 关键参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -675,7 +939,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.8k</span>
+    <span title="Site words total count">36.3k</span>
   
 </div>
 
