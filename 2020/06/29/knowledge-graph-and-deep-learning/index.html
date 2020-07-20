@@ -109,7 +109,7 @@
 <meta property="og:description" content="《知识图谱与深度学习》--刘知远，读书笔记">
 <meta property="og:locale" content="zh">
 <meta property="article:published_time" content="2020-06-29T01:05:47.000Z">
-<meta property="article:modified_time" content="2020-06-29T02:30:09.378Z">
+<meta property="article:modified_time" content="2020-07-20T01:57:54.387Z">
 <meta property="article:author" content="Donghao Zhang">
 <meta property="article:tag" content="知识图谱理论">
 <meta name="twitter:card" content="summary">
@@ -367,8 +367,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-06-29T10:30:09+08:00">
-                2020-06-29
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-20T09:57:54+08:00">
+                2020-07-20
               </time>
             
           </span>
@@ -449,7 +449,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.3k
+                  2.3k
                 </span>
               
 
@@ -465,7 +465,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4
+                  8
                 </span>
               
             </div>
@@ -524,7 +524,7 @@
 </ul></li>
 </ul>
 <h1 id="世界知识图谱">2. 世界知识图谱</h1>
-<h3 id="世界知识的表示学习">2.1 世界知识的表示学习</h3>
+<h2 id="世界知识的表示学习">2.1 世界知识的表示学习</h2>
 <ul>
 <li><strong>原始符号表示的大规模知识图谱在计算利用上面临如下挑战</strong>：<code>~Page 9~</code>
 <ul>
@@ -537,13 +537,76 @@
 <li>分布式表示便于计算相似度</li>
 <li>将多源异质信息映射到同一语义空间，建立多源跨模态的信息交互，且分布式表示能便捷地融入深度学习的模型框架中</li>
 </ul></li>
+<li><strong>世界知识图谱的特性</strong>对其表示学习的效果具有重要影响
+<ul>
+<li>实体和关系类型多样</li>
+<li>实体和关系在显示中有很多形式的体现（文本、声音、图像等形式）</li>
+<li>知识图谱具有高噪声、低完整度</li>
+</ul></li>
 <li>探索了考虑各种外部信息来提升知识表示学习性能的可行性，如复杂关系类型，关系路径，实体描述信息，综合考虑实体、属性与关系信息，实体图像信息等。<code>~Page 10~</code></li>
+<li><strong>当前研究主要在以下两个方面进行深入与展开</strong>：
+<ul>
+<li>如何恰当地对世界知识图谱的结构进行建模</li>
+<li>如何恰当地在表示学习中融入世界知识图谱之外的信息</li>
+</ul></li>
 </ul>
-<h3 id="世界知识的自动获取">2.2 世界知识的自动获取</h3>
+<h3 id="知识表示学习经典模型">2.1.2 知识表示学习经典模型</h3>
+<h4 id="结构向量模型structured-embedding-se">2.1.2.1 结构向量模型（Structured Embedding, SE）</h4>
+<ul>
+<li><strong>该模型实体使用向量表示，关系使用 2 个矩阵表示</strong></li>
+<li>所有实体被投影至同一个低维的向量空间中</li>
+<li>针对每个关系 <span class="math inline">\(r\)</span>，SE 为头尾实体分别设计了一个关系特化的映射矩阵 <span class="math inline">\(M_{r,1}\)</span> 和 <span class="math inline">\(M_{r,2}\)</span></li>
+<li>评分函数为（<strong>函数值越小，三元组存在的可能性越高</strong>） <span class="math display">\[E(h,r,t)=||M_{r,1}h - M_{r,2}t||_{L_1/L_2}\]</span></li>
+</ul>
+<h4 id="语义匹配能量模型semantic-matching-energy-sme">2.1.2.2 语义匹配能量模型（Semantic Matching Energy, SME）</h4>
+<ul>
+<li><strong>该模型实体与向量均表示为向量</strong></li>
+<li>模型使用矩阵映射、点乘等操作，对实体和关系的联系进行评估</li>
+<li>评分函数分为<strong>线性形式与双线性形式</strong>（<strong>函数值越大，三元组存在的可能性越高</strong>）
+<ul>
+<li>线性形式 <span class="math display">\[s(h,r,t)=(M_1h+M_2r+b_1)(M_3t+M_4r+b_2)\]</span></li>
+<li>双线性形式， <span class="math inline">\(\circ\)</span> 代表元素乘 <span class="math display">\[s(h,r,t)=((M_1h \circ M_2r)+b_1)((M_3t \circ M_4r)+b_2)\]</span></li>
+</ul></li>
+</ul>
+<h4 id="隐变量模型latent-factor-model-lfm">2.1.2.3 隐变量模型（Latent Factor Model, LFM）</h4>
+<ul>
+<li><strong>该模型的实体为向量，关系为矩阵</strong></li>
+<li>评分函数为（<strong>函数值越大，三元组存在的可能性越高</strong>） <span class="math display">\[s(h,r,t) = hM_rt\]</span></li>
+</ul>
+<h4 id="矩阵分解模型">2.1.2.4 矩阵分解模型</h4>
+<ul>
+<li><strong>该模型实体为向量，关系使用矩阵表示</strong></li>
+<li>基于矩阵分解的方式进行知识表示学习</li>
+<li>使用一个三阶张量 <span class="math inline">\(X \in \mathbb{R}^{d \times d \times k}\)</span>，其中 <span class="math inline">\(d\)</span> 为实体的数量，<span class="math inline">\(k\)</span> 为关系的数量。如果 <span class="math inline">\(X_{htr}\)</span>，则表示三元组 <span class="math inline">\((h,r,t)\)</span> 存在</li>
+<li>设 <span class="math inline">\(X=\{X_1, \dots , X_k\}\)</span>，则有矩阵分解 <span class="math display">\[X_i \approx AR_iA\]</span> 其中 <span class="math inline">\(A\)</span> 表示实体向量形成的矩阵；<span class="math inline">\(R_i\)</span> 表示第 <span class="math inline">\(i\)</span> 个关系矩阵</li>
+</ul>
+<h4 id="神经张量网络模型neural-tensor-network-ntn">2.1.2.5 神经张量网络模型（Neural Tensor Network, NTN）</h4>
+<ul>
+<li><strong>该模型实体为向量，关系为神经网络</strong></li>
+<li>该模型基于单层神经网络模型</li>
+<li>评分函数为（<strong>函数值越大，三元组存在的可能性越高</strong>） <span class="math display">\[s(h, r, t) = u_r^T \tanh(h^T M_r t + M_{r,1}h + M_{r,2}t + b_r)\]</span></li>
+</ul>
+<h4 id="平移模型transe">2.1.2.6 平移模型（TransE）</h4>
+<ul>
+<li>受到 <strong>word2vec</strong> 中观察到的词向量之间有着有趣的<strong>语义平移现象</strong>的启发，平移模型将词向量的隐含语义关系显式地利用关系进行表示</li>
+<li>评分函数为（<strong>函数值越小，三元组存在的可能性越高</strong>） <span class="math display">\[E(h,r,t)=||h+r-t||_{L_1/L_2}\]</span></li>
+<li>训练过程最小化如下函数： <span class="math display">\[\mathcal{L}=\sum_{(h,r,t)\in\mathcal{T}}\sum_{(h&#39;, r&#39;, t&#39;)\in \mathcal{T}&#39;} \max(\gamma + E(h,r,t) - E(h&#39;,r&#39;,t&#39;), 0)\]</span> 其中 <span class="math inline">\(\mathcal{T}\)</span> 为正例集合，<span class="math inline">\(\mathcal{T}&#39;\)</span> 为负例集合</li>
+<li><strong>平移模型的不足：</strong>
+<ul>
+<li>过于理想化的平移假设（一对多、多对一、多对多的复杂关系，关系本身的语义和映射特点） <a id="平移模型的不足1"></a></li>
+<li>仅关注知识图谱三元组的局部信息，忽略了知识图谱网络的全局结构与关系之间的推理逻辑（多步关系路径，逻辑规则）</li>
+<li>只关注了知识图谱自身的网络结构信息，忽略了众多多源异质的丰富信息（文本、实体类型、图像等）</li>
+</ul></li>
+</ul>
+<h3 id="基于复杂关系建模的知识表示学习transr">2.1.3 基于复杂关系建模的知识表示学习（TransR）</h3>
+<ul>
+<li>针对平移模型的<a href="#平移模型的不足1">不足 1</a></li>
+</ul>
+<h2 id="世界知识的自动获取">2.2 世界知识的自动获取</h2>
 <ul>
 <li>基于远程监督的关系抽取，数据获取过程会不可避免地引入噪声标注（句子级别的注意力机制、对抗训练机制），会显著影响关系抽取模型的性能。此外如何利用已有的知识图谱和文本数据进行关系抽取（知识注意力机制），如何充分利用多语言文本数据进行关系抽取（跨语言注意力机制），都是<strong>关系抽取模型面临的挑战性问题</strong>。<code>~Page 12~</code></li>
 </ul>
-<h3 id="世界知识的计算应用">2.3 世界知识的计算应用</h3>
+<h2 id="世界知识的计算应用">2.3 世界知识的计算应用</h2>
 <ul>
 <li>深度学习以前，知识图谱只能基于离散符号的形式进行使用，往往采用以下使用方式：<code>~Page 13~</code>
 <ul>
@@ -682,7 +745,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -772,7 +835,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#绪论"><span class="nav-text">1. 绪论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#世界知识图谱"><span class="nav-text">2. 世界知识图谱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#世界知识的表示学习"><span class="nav-text">2.1 世界知识的表示学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#世界知识的自动获取"><span class="nav-text">2.2 世界知识的自动获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#世界知识的计算应用"><span class="nav-text">2.3 世界知识的计算应用</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#绪论"><span class="nav-text">1. 绪论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#世界知识图谱"><span class="nav-text">2. 世界知识图谱</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#世界知识的表示学习"><span class="nav-text">2.1 世界知识的表示学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识表示学习经典模型"><span class="nav-text">2.1.2 知识表示学习经典模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结构向量模型structured-embedding-se"><span class="nav-text">2.1.2.1 结构向量模型（Structured Embedding, SE）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语义匹配能量模型semantic-matching-energy-sme"><span class="nav-text">2.1.2.2 语义匹配能量模型（Semantic Matching Energy, SME）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐变量模型latent-factor-model-lfm"><span class="nav-text">2.1.2.3 隐变量模型（Latent Factor Model, LFM）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵分解模型"><span class="nav-text">2.1.2.4 矩阵分解模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#神经张量网络模型neural-tensor-network-ntn"><span class="nav-text">2.1.2.5 神经张量网络模型（Neural Tensor Network, NTN）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平移模型transe"><span class="nav-text">2.1.2.6 平移模型（TransE）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于复杂关系建模的知识表示学习transr"><span class="nav-text">2.1.3 基于复杂关系建模的知识表示学习（TransR）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#世界知识的自动获取"><span class="nav-text">2.2 世界知识的自动获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#世界知识的计算应用"><span class="nav-text">2.3 世界知识的计算应用</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -806,7 +869,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">36.3k</span>
+    <span title="Site words total count">38k</span>
   
 </div>
 
